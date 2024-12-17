@@ -1,10 +1,4 @@
-          /* Header */
-            header {
-            background-color: #0056b3; 
-            color: #ffffff;
-            text-align: center;
-            padding: 20px;
-        }
+ 
         /* General Styles */
         body {
             font-family: 'Roboto', Arial, sans-serif;
@@ -12,6 +6,13 @@
             padding: 0;
             background-color: #f8f9fa;
             color: #343a40;
+        }
+            /* Header */
+            header {
+            background-color: #0056b3; 
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
         }
         /* Increase logo size */
     header img {
