@@ -1,5 +1,5 @@
- 
-         /* General Styles */
+
+        /* General Styles */
         body {
             font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
@@ -52,90 +52,216 @@
             color: #0056b3;
         }
 
-        /* Banner */
-        .banner {
-            background-color: #e9ecef;
-            text-align: center;
-            padding: 50px 20px;
-        }
-        .banner h2 {
-            font-size: 2.5em;
-            margin: 0;
-            color: #0056b3;
-        }
+/* Banner */
+.banner {
+    position: relative;
+    background-color: #ffffff; /* White background for a clean, minimalist look */
+    color: #0056b3; /* Dark blue text for contrast */
+    text-align: center;
+    padding: 100px 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Soft shadow for subtle depth */
+    overflow: hidden;
+    margin-top: 2cm; /* Gap between header and banner */
+}
 
-        /* Scrolling Text */
-        .scroll-text {
-            font-size: 1.5em;
-            color: #0056b3;
-            white-space: nowrap;
-            overflow: hidden;
-            position: relative;
-        }
-        .scroll-content {
-            display: inline-block;
-            animation: scroll 20s linear infinite;
-        }
-        @keyframes scroll {
-            0% {
-                transform: translateX(100%);
-            }
-            50% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-        .scroll-content:hover {
-            animation-play-state: paused;
-        }
-        
+/* Banner Title */
+.banner h2 {
+    font-family: 'Playfair Display', Imprint MT Shadow; /* Elegant serif font */
+    font-size: 3.5em;
+    font-weight: 700;
+    margin: 0;
+    color: #0056b3; /* Dark blue color */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    animation: fadeInText 1.5s ease-out, slideIn 1s ease-out forwards; /* Combined animations */
+}
 
-        /* Content Section */
-        .content {
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .content h3 {
-            color: #0056b3;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+/* Banner Text Hover Effects */
+.banner h2:hover {
+    color: #ffc107; /* Yellow hover effect */
+    transform: scale(1.05); /* Slight zoom effect */
+    transition: all 0.3s ease;
+}
 
-        /* Cards for Departments */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-        }
-        .card h4 {
-            margin: 0 0 10px;
-            color: #0056b3;
-            cursor: pointer;
-        }
-        .card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: none;
-        }
-        .card ul li {
-            padding: 5px 0;
-        }
+/* Text underline animation */
+@keyframes underlineEffect {
+    0% {
+        width: 0;
+        left: 50%;
+    }
+    50% {
+        width: 60%;
+        left: 20%;
+    }
+    100% {
+        width: 0;
+        left: 50%;
+    }
+}
+
+.banner h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 0;
+    height: 4px;
+    background-color: #ffc107; /* Yellow underline */
+    border-radius: 2px;
+    transform: translateX(-50%);
+    animation: underlineEffect 3s ease infinite; /* Underline effect animation */
+}
+
+/* Fade-in Text Animation */
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Banner Design Elements */
+.banner::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: url('images/abstract-shape.png') center center no-repeat; /* Add abstract shape or subtle texture */
+    opacity: 0.1; /* Light opacity for subtle design effect */
+    z-index: -1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .banner {
+        padding: 60px 20px;
+    }
+
+    .banner h2 {
+        font-size: 2.5em; /* Adjust font size for smaller screens */
+    }
+}
+
+   /* General Content Section */
+.overview-section {
+    background-color: #ffffff; /* Clean, white background */
+    padding: 50px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    max-width: 1100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* Decorative Lines */
+.overview-section::before, .overview-section::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 5px;
+    background-color: #ffc107; /* Yellow accent color */
+    border-radius: 2px;
+}
+
+.overview-section::before {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.overview-section::after {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Headings Styling */
+.overview-section h2, .overview-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8em;
+    color: #0056b3; /* Primary blue color */
+    text-transform: uppercase;
+    margin: 0 0 20px 0;
+    position: relative;
+    line-height: 1.3;
+}
+
+.overview-section h2::after, .overview-section h3::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    margin: 10px auto 0;
+    background-color: #ffc107; /* Yellow underline accent */
+    border-radius: 2px;
+}
+
+/* Paragraph Styling */
+.overview-section p {
+    font-size: 1.2em;
+    line-height: 1.8;
+    color: #555555;
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+/* Subtle Content Decoration */
+.overview-section p::first-letter {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #007bff; /* Slight color pop on first letter */
+}
+
+/* Call to Action Button */
+.overview-section .cta-button {
+    display: inline-block;
+    background: linear-gradient(to right, #ffc107, #dfa906);
+    color: #0056b3;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-top: 30px;
+    box-shadow: 0 4px 10px rgba(240, 217, 16, 0.2);
+    transition: all 0.3s ease;
+}
+
+.overview-section .cta-button:hover {
+    background: linear-gradient(to right, #ffc107, #dfa906);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .overview-section h2, .overview-section h3 {
+        font-size: 2.2em;
+    }
+
+    .overview-section p {
+        font-size: 1.1em;
+        padding: 0 10px;
+    }
+
+    .overview-section .cta-button {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+}
 
         /* Footer */
         footer {
@@ -175,6 +301,7 @@
                 font-size: 1.2em;
             }
         }
+
     /* Accordion Styles */
     .accordion {
         max-width: 800px;
@@ -228,6 +355,8 @@
     .accordion-header.active + .accordion-content {
         display: block;
     }
+   
+
 /* General Menu Styles */
 .menu-container {
     background-color: #007bff; /* Keep the primary blue color */
@@ -293,6 +422,29 @@
 #menu ul li a:hover {   
     background-color: #007bff; /* Matches main theme */
     color: white; /* White text on hover */
+}
+@keyframes scrollText {
+    from {
+        transform: translateX(0); /* Start at initial position */
+    }
+    to {
+        transform: translateX(-100%); /* Scroll entire width */
+    }
+}
+/* Hover Effect for Pause */
+.scroll-wrapper:hover {
+    animation-play-state: paused;
+}
+
+.scroll-text-container {
+    cursor: pointer; /* Pointer cursor for interactivity */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .scroll-text {
+        font-size: 1em;
+    }
 }
 /* Floating Buttons Container */
 .floating-buttons {
@@ -380,17 +532,4 @@
         border-radius: 5px;
         text-align: center;
     }
-}
-/* Smooth scrolling effect */
-@keyframes smoothScroll {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-.scroll-content:hover {
-    animation-play-state: paused; /* Pause animation on hover */
 }
