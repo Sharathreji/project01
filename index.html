@@ -1,11 +1,12 @@
-<html> 
+<!DOCTYPE html>
+<html lang="en">
 <head>
-     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JMP Medical Centre</title>
      <link rel="stylesheet" href="css/index.css">
      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-</head>
+</html>
 <body>
     <header>
         <img src="images/jmplogo.png" alt="JMP Logo or Photo">
@@ -34,37 +35,68 @@
 </nav>
     </nav>
 </div>
-    <div class="banner">
-        <h2>One of the Main Hospitals in Piravom</h2>
-    </div>
-  <div style="text-align: center; margin: 10px;">
-    <div class="scroll-text">
-        <div class="scroll-content">
-            For Bookings Call - 0485 2243443, 2242727, 2241274
-        </div>
+    <!-- Banner Section -->
+<div class="banner">
+    <h2>Innovative Care & Inspiring Wellness</h2>
+<!-- Scrolling Call Section -->
+<div class="scroll-text-container" style="
+    position: relative; 
+    overflow: hidden; 
+    background: linear-gradient(to right, #0056b3, #003366); 
+    color: #ffc107; 
+    padding: 10px 0; 
+    margin: 1cm auto 0.5cm auto; /* 1cm below banner, 0.5cm above preview */
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 95%;
+    white-space: nowrap;">
+    <div class="scroll-wrapper" style="display: flex; animation: scrollText 12s linear infinite;">
+        <!-- Duplicate Content for Continuous Scrolling -->
+        <span class="scroll-text" style="font-size: 1.2em; font-weight: bold; letter-spacing: 1px;">
+            📞 For Bookings Call: 0485 2243443 | 2242727 | 2241274 &nbsp;&nbsp;&nbsp;&nbsp;
+            📞 For Bookings Call: 0485 2243443 | 2242727 | 2241274 &nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+        <span class="scroll-text" style="font-size: 1.2em; font-weight: bold; letter-spacing: 1px;">
+            📞 For Bookings Call: 0485 2243443 | 2242727 | 2241274 &nbsp;&nbsp;&nbsp;&nbsp;
+            📞 For Bookings Call: 0485 2243443 | 2242727 | 2241274 &nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
     </div>
 </div>
-<!-- Overview Section -->
-<div id="overview" class="overview-section" style="padding: 20px; font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
-    <h2 style="text-align:center;""font-size: 24px; color:#007bff; margin-bottom: 15px;">Preview</h2>
+<!-- JavaScript for Click Pause -->
+<script>
+document.querySelector('.scroll-text-container').addEventListener('click', function () {
+    alert('📞 Book Now: 0485 2243443 | 2242727 | 2241274');
+});
+</script>
+<!-- Elegant Overview Section -->
+<div id="overview" class="overview-section">
+    <h2>Preview</h2>
     <p>
-        PEACE FOUNDATION (Pachomios Educational And Charitable Enlightenment Foundation) was established to perpetuate the sacred memory of His Grace Joseph Mar Pachomios on 24th July 1997 under the patronage of St. George Orthodox Syrian Church, Karmelkunnu, Mulakulam (N) .Mar Pachomios is the true symbol of Christian virtues. He dedicated his whole life to the cause of the poor and the needy, the down-trodden and the ill-treated. The members of the foundation decided to give primary importance to health care and go ahead with the ambitious task to establishing a Multi-speciality hospital at Piravom.
+       PEACE FOUNDATION (Pachomios Educational And Charitable Enlightenment Foundation) was established to perpetuate 
+        the sacred memory of His Grace Joseph Mar Pachomios on <strong>24th July 1997</strong> under the patronage of 
+        St. George Orthodox Syrian Church, Karmelkunnu, Mulakulam (N). Mar Pachomios is the true symbol of Christian virtues. 
+        He dedicated his whole life to the cause of the poor and the needy, the down-trodden and the ill-treated. The members 
+        of the foundation decided to give primary importance to health care and go ahead with the ambitious task of establishing 
+        a Multi-specialty hospital at Piravom.
     </p>
-    <h3 style="text-align:center;"font-size: 24px; color:#007bff; margin-bottom: 15px;">Our Mission</h3>
-    <p>
-        The concept of a Multi speciality hospital is a boon to the inhabitants of this area satisfying the needs of thousands of people in and around piravom. The hospital aims to providing state-of-the-art medical attention at affordable expenses to the common man. 
 
+    <h3>Our Mission</h3>
+    <p>
+        The concept of a Multi-specialty hospital is a boon to the inhabitants of this area, satisfying the needs of thousands 
+        of people in and around Piravom. The hospital aims to provide state-of-the-art medical attention at affordable expenses 
+        to the common man.
     </p>
+
+    <a href="services.html" class="cta-button">Explore Our Services</a>
 </div>
-
 <!-- Image Section -->
 <div class="image-section" style="margin: 20px 0; text-align: center;">
     <img src="images/back.png" alt="JMP MEDICAL CENTRE" style="max-width: 100%; border-radius: 8px;">
 </div>
 
 <!-- Address Section -->
-<div class="address-section" style="background-color: #f4f4f9; padding: 20px; font-family: Arial, sans-serif; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
-    <h2 style="font-size: 20px; color: #1d3557; margin-bottom: 10px;">Address</h2>
+<div class="address-section" style="background-color: #ffffff; padding: 20px; font-family: Arial, sans-serif; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+    <h2 style="font-size: 20px; color: #1c4681; margin-bottom: 10px;">Address</h2>
     <p style="margin: 0;">
         JMP Medical Center, Kakkad P O,<br>
           Piravom, Kerala 686664
@@ -76,8 +108,6 @@
     </div>
 </div>
 </div>
-</style>
-<body>
 <div class="floating-buttons">
     <button class="floating-button call-button" onclick="showContactNumber('📞 Book Appointments: +91 485 224 1274', '+914852241274')">
         <span class="icon">📞</span> Book Appointments
@@ -89,14 +119,13 @@
 </div>
 </body>
 <script>
-    function showContactNumber(message, tel) {
-    if (window.innerWidth >= 1024) { 
-        // Desktop View
+function showContactNumber(message, tel) {
+    if (window.innerWidth >= 1024) { // Desktop View
         alert(`Call - ${message}`);
     } else { // Mobile View
         window.location.href = `tel:${tel}`;
     }
-    }
+}
 </script>               
     <footer>
         <p>&copy; 2024 JMP Medical Centre. All rights reserved.</p>
