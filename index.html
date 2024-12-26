@@ -4,167 +4,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JMP Medical Centre</title>
-     <link rel="stylesheet" href="css/index.css">
-     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-</html>
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
 <body>
     <header>
-        <img src="images/jmplogo.png" alt="JMP Logo or Photo">
+        <img src="images/jmplogo.png" alt="JMP Logo" style="max-width: 100px;">
         <h1>JMP Medical Centre</h1>
         <p>Managed by Peace Foundation</p>
-        <p>Piravom, Ernakulam, 686664, Kerala</p>
+        <address>
+            Piravom, Ernakulam, 686664, Kerala
+        </address>
     </header>
+
+    <!-- Navigation -->
     <div class="menu-container">
-    <div id="menu-toggle" class="menu-bar">
-        <span class="menu-icon">&#9776;</span>
-        <span class="menu-label">Menu</span>
+        <button id="menu-toggle" aria-label="Toggle Navigation Menu">
+            <span class="menu-icon">&#9776;</span> Menu
+        </button>
+        <nav id="menu" class="hidden" aria-label="Main Navigation">
+            <ul>
+                <li><a href="#overview">About Us</a></li>
+                <li><a href="doctors-and-department.html">Departments & Doctors</a></li>
+                <li><a href="surgeries.html">Surgeries</a></li>
+                <li><a href="services.html">Our Services</a></li>
+                <li><a href="services.html#24-Hour Services">24-Hour Services</a></li>
+                <li><a href="insurance.html">Insurance</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="reviews.html">Reviews & Suggestions</a></li>
+            </ul>
+        </nav>
     </div>
-    <nav id="menu" class="hidden">
-    <ul>
-        <li><a href="#overview">About Us</a></li>
-        <li><a href="doctors-and-department.html">Departments & Doctors</a></li>
-        <li><a href="surgeries.html">Surgeries</a></li>
-        <li><a href="services.html">Our Services</a></li>
-        <li><a href="services.html#24-Hour Services">24-Hour Services</a></li>
-        <li><a href="insurance.html">Insurance</a></li>
-        <li><a href="careers.html">Careers</a></li>
-        <li><a href="reviews.html">Reviews & Suggestions</a></li>
-    </ul>
-</nav>
-    </ul>
-</nav>
-    </nav>
-</div>
+
     <!-- Banner Section -->
-<div class="banner">
-    <h2>Innovative Care & Inspiring Wellness</h2>
-<!-- Scrolling Call Section -->
-<div class="scroll-text-container" style="
-    position: relative; 
-    overflow: hidden; 
-    background: linear-gradient(to right, #0056b3, #003366); 
-    color: #ffc107; 
-    padding: 10px 0; 
-    margin: 1cm auto 0.5cm auto; /* 1cm below banner, 0.5cm above preview */
-    border-radius: 8px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 95%;
-    white-space: nowrap;">
-    <div class="scroll-wrapper" style="display: flex; animation: scrollText 12s linear infinite;">
-        <!-- Duplicate Content for Continuous Scrolling -->
-        <span class="scroll-text" style="font-size: 1.2em; font-weight: bold; letter-spacing: 1px;">
-            📞 For Bookings Call: 0485 2243443 | 2242727 | 2241274 &nbsp;&nbsp;&nbsp;&nbsp;
-            📞 For Bookings Call: 0485 2243443 | 2242727 | 2241274 &nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-        <span class="scroll-text" style="font-size: 1.2em; font-weight: bold; letter-spacing: 1px;">
-            📞 For Bookings Call: 0485 2243443 | 2242727 | 2241274 &nbsp;&nbsp;&nbsp;&nbsp;
-            📞 For Bookings Call: 0485 2243443 | 2242727 | 2241274 &nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
+    <div class="banner">
+        <h2>Innovative Care & Inspiring Wellness</h2>
+        <!-- Scrolling Contact Section -->
+        <div class="scroll-text-container" style="background: linear-gradient(to right, #0056b3, #003366); color: #ffc107;">
+            <div class="scroll-wrapper" style="animation: scrollText 12s linear infinite;">
+                <span class="scroll-text">
+                    📞 For Bookings Call: 0485 2243443 | 2242727 | 2241274 &nbsp;&nbsp;&nbsp;
+                </span>
+            </div>
+        </div>
     </div>
-</div>
-<!-- JavaScript for Click Pause -->
-<script>
-document.querySelector('.scroll-text-container').addEventListener('click', function () {
-    alert('📞 Book Now: 0485 2243443 | 2242727 | 2241274');
-});
-</script>
-<!-- Elegant Overview Section -->
-<div id="overview" class="overview-section">
-    <h2>Preview</h2>
-    <p>
-       PEACE FOUNDATION (Pachomios Educational And Charitable Enlightenment Foundation) was established to perpetuate 
-        the sacred memory of His Grace Joseph Mar Pachomios on <strong>24th July 1997</strong> under the patronage of 
-        St. George Orthodox Syrian Church, Karmelkunnu, Mulakulam (N). Mar Pachomios is the true symbol of Christian virtues. 
-        He dedicated his whole life to the cause of the poor and the needy, the down-trodden and the ill-treated. The members 
-        of the foundation decided to give primary importance to health care and go ahead with the ambitious task of establishing 
-        a Multi-specialty hospital at Piravom.
-    </p>
 
-    <h3>Our Mission</h3>
-    <p>
-        The concept of a Multi-specialty hospital is a boon to the inhabitants of this area, satisfying the needs of thousands 
-        of people in and around Piravom. The hospital aims to provide state-of-the-art medical attention at affordable expenses 
-        to the common man.
-    </p>
+    <!-- Overview Section -->
+    <section id="overview" class="overview-section">
+        <h2>About Us</h2>
+        <p>
+            PEACE FOUNDATION (Pachomios Educational And Charitable Enlightenment Foundation) was established to perpetuate 
+            the sacred memory of His Grace Joseph Mar Pachomios on <strong>24th July 1997</strong>. Under the patronage of 
+            St. George Orthodox Syrian Church, Karmelkunnu, Mulakulam (N), this foundation prioritizes health care with its 
+            multi-specialty hospital in Piravom.
+        </p>
+        <h3>Our Mission</h3>
+        <p>
+            To provide state-of-the-art medical attention at affordable expenses, catering to the healthcare needs of the 
+            inhabitants of Piravom and surrounding areas.
+        </p>
+        <a href="services.html" class="cta-button">Explore Our Services</a>
+    </section>
 
-    <a href="services.html" class="cta-button">Explore Our Services</a>
-</div>
-<!-- Image Section -->
-<div class="image-section" style="margin: 20px 0; text-align: center;">
-    <img src="images/back.png" alt="JMP MEDICAL CENTRE" style="max-width: 100%; border-radius: 8px;">
-</div>
+    <!-- Image Section -->
+    <section class="image-section" style="text-align: center;">
+        <img src="images/back.png" alt="JMP Medical Centre" style="max-width: 100%; border-radius: 8px;">
+    </section>
 
-<!-- Address Section -->
-<div class="address-section" style="background-color: #ffffff; padding: 20px; font-family: Arial, sans-serif; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
-    <h2 style="font-size: 20px; color: #1c4681; margin-bottom: 10px;">Address</h2>
-    <p style="margin: 0;">
-        JMP Medical Center, Kakkad P O,<br>
-          Piravom, Kerala 686664
-    </p>
-    <div style="margin-top: 10px;">
-        <a href="https://maps.app.goo.gl/pA925zdsK1QT9Rfa7" target="_blank" style="text-decoration: none; padding: 10px 20px; background-color: #1d3557; color: #fff; border-radius: 4px; font-size: 16px;">
-            Get Directions
-        </a>
+    <!-- Address Section -->
+    <section class="address-section">
+        <h2>Contact Us</h2>
+        <address>
+            JMP Medical Centre, Kakkad P.O., Piravom, Kerala 686664
+        </address>
+        <a href="https://maps.app.goo.gl/pA925zdsK1QT9Rfa7" target="_blank" class="get-directions-button">Get Directions</a>
+    </section>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <button class="floating-button call-button" onclick="dialNumber('+914852241274')">
+            📞 Book Appointments
+        </button>
+        <button class="floating-button ambulance-button" onclick="dialNumber('+919947621789')">
+            🚑 Ambulance Service (24hrs)
+        </button>
     </div>
-</div>
-</div>
-<div class="floating-buttons">
-    <button class="floating-button call-button" onclick="showContactNumber('📞 Book Appointments: +91 485 224 1274', '+914852241274')">
-        <span class="icon">📞</span> Book Appointments
-    </button>
-    <button class="floating-button ambulance-button" onclick="showContactNumber('📞 Ambulance Service: +91 99476 21789', '+919947621789')">
-        <span class="icon">🚑</span> Ambulance Service 
-        <span class="tag">24hrs</span>
-    </button>
-</div>
-</body>
-<script>
-function showContactNumber(message, tel) {
-    if (window.innerWidth >= 1024) { // Desktop View
-        alert(`Call - ${message}`);
-    } else { // Mobile View
-        window.location.href = `tel:${tel}`;
-    }
-}
-</script>               
+
+    <!-- Footer -->
     <footer>
         <p>&copy; 2024 JMP Medical Centre. All rights reserved.</p>
-        <div class="icons">
-            <a href="#">&#128222;</a>
-            <a href="#">&#128231;</a>
-            <a href="#">&#127968;</a>
-        </div>
     </footer>
+
+    <!-- JavaScript -->
     <script>
-        function toggleSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            section.style.display = section.style.display === 'block' ? 'none' : 'block';
+        // Toggle Navigation Menu
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Dial Number Functionality
+        function dialNumber(tel) {
+            window.location.href = `tel:${tel}`;
         }
     </script>
-    <script>
-        document.querySelectorAll('.accordion-header').forEach(button => {
-            button.addEventListener('click', () => {
-                const activeButton = document.querySelector('.accordion-header.active');
-                if (activeButton && activeButton !== button) {
-                    activeButton.classList.remove('active');
-                    activeButton.nextElementSibling.style.display = 'none';
 
-                }
+    <!-- CSS Animation for Scrolling -->
+    <style>
+        .scroll-text-container {
+            overflow: hidden;
+            padding: 10px 0;
+            margin: 10px auto;
+            border-radius: 8px;
+            text-align: center;
+        }
 
-                button.classList.toggle('active');
-                const content = button.nextElementSibling;
-                content.style.display = content.style.display === 'block' ? 'none' : 'block';
-            });
-        });
-    </script>
+        .scroll-wrapper {
+            display: inline-block;
+            white-space: nowrap;
+        }
 
-<script>
-document.getElementById('menu-toggle').addEventListener('click', function () {
-    const menu = document.getElementById('menu');
-    menu.classList.toggle('show');
-});
-</script>
+        @keyframes scrollText {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
 
+        .hidden {
+            display: none;
+        }
 
+        .get-directions-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #1d3557;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+    </style>
 </body>
-</html>             
+</html>
