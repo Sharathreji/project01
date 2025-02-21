@@ -94,19 +94,45 @@
             transition: opacity 1s ease-in-out;
             margin-top: 30px;
         }
+
+        /* Cute Panda */
+        .panda {
+            width: 150px;
+            height: auto;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .panda:hover {
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        .panda:active {
+            transform: translateX(-50%) rotate(10deg) scale(1.2);
+        }
     </style>
 </head>
 <body>
     <div class="heart-container" id="hearts"></div>
     <h1>💖 I Love You, Kavya Jagadeesh! 💖</h1>
     <p>You are my happiness, my heart, my everything! 💑</p>
+    <p>Even if I had a prescription for love, you would be the only medicine I need ❤‍🩹</p>
+    <p>💘 Sorry that I didn't do this for Valentine's Day... 😔💘</p>
 
     <!-- Big heart that beats and explodes -->
     <div class="big-heart" id="bigHeart" onclick="explodeLove()">💖</div>
 
     <button class="love-button" onclick="revealMessage()">Press Me! 💘</button>
 
-    <p class="hidden-message" id="secretMessage">💕 You are my forever love, Kavya CJ! 💕</p>
+    <p class="hidden-message" id="secretMessage">💕 You are my forever love, Kavya Jagadeesh! 💕</p>
+
+    <!-- Cute Panda -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Giant_Panda_in_Beijing_Zoo_2.JPG/320px-Giant_Panda_in_Beijing_Zoo_2.JPG" 
+         alt="Cute Panda" class="panda" id="panda" onclick="pandaReact()">
 
     <script>
         function createHeart() {
@@ -123,7 +149,7 @@
 
         function explodeLove() {
             const bigHeart = document.getElementById('bigHeart');
-            bigHeart.innerHTML = "Even if I had a prescription for love you would be the only medicine I need ";
+            bigHeart.innerHTML = "💥";
             setTimeout(() => { bigHeart.innerHTML = "💖"; }, 500);
 
             for (let i = 0; i < 20; i++) {
@@ -149,18 +175,9 @@
             document.getElementById("secretMessage").style.opacity = 1;
         }
 
-        document.body.addEventListener("click", function(e) {
-            let burst = document.createElement("div");
-            burst.innerText = "❤️";
-            burst.style.position = "absolute";
-            burst.style.left = e.pageX + "px";
-            burst.style.top = e.pageY + "px";
-            burst.style.fontSize = "30px";
-            burst.style.opacity = 1;
-            burst.style.transition = "all 1s ease-out";
-            document.body.appendChild(burst);
-            setTimeout(() => { burst.style.opacity = 0; burst.remove(); }, 1000);
-        });
+        function pandaReact() {
+            alert("🐼 The panda loves you too, Kavya! 💖");
+        }
     </script>
 </body>
 </html>
