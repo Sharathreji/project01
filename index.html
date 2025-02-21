@@ -54,7 +54,7 @@
         .big-heart {
             font-size: 120px;
             position: absolute;
-            top: 50%;
+            top: 55%;
             left: 50%;
             transform: translate(-50%, -50%);
             animation: heartbeat 1.5s infinite alternate;
@@ -64,26 +64,6 @@
         @keyframes heartbeat {
             0% { transform: translate(-50%, -50%) scale(1); }
             100% { transform: translate(-50%, -50%) scale(1.2); }
-        }
-
-        .love-button {
-            padding: 20px 40px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #ff6699, #ff3366);
-            color: white;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
-            margin-top: 20px;
-            box-shadow: 0 0 15px rgba(255, 51, 102, 0.7);
-            transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
-        }
-
-        .love-button:hover {
-            transform: scale(1.1);
-            background: linear-gradient(45deg, #ff3366, #ff0033);
-            box-shadow: 0 0 25px rgba(255, 0, 51, 0.9);
         }
 
         .hidden-message {
@@ -126,8 +106,6 @@
     <!-- Big heart that beats and explodes -->
     <div class="big-heart" id="bigHeart" onclick="explodeLove()">💖</div>
 
-    <button class="love-button" onclick="revealMessage()">Press Me! 💘</button>
-
     <p class="hidden-message" id="secretMessage">💕 You are my forever love, Kavya Jagadeesh! 💕</p>
 
     <!-- Cute Panda -->
@@ -155,6 +133,8 @@
             for (let i = 0; i < 50; i++) {
                 createHeartBurst();
             }
+
+            document.getElementById("secretMessage").style.opacity = 1;
         }
 
         function createHeartBurst() {
@@ -168,10 +148,6 @@
             heart.style.animation = `burst 1s ease-out forwards`;
             document.body.appendChild(heart);
             setTimeout(() => { heart.remove(); }, 1000);
-        }
-
-        function revealMessage() {
-            document.getElementById("secretMessage").style.opacity = 1;
         }
 
         function pandaReact() {
