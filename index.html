@@ -29,7 +29,6 @@
         }
         .heart {
             position: absolute;
-            color: red;
             font-size: 2rem;
             animation: float 5s infinite ease-in-out;
         }
@@ -55,6 +54,20 @@
             transform: scale(1.1);
             background-color: #cc0066;
         }
+        .big-heart {
+            font-size: 100px;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: none;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+            25% { transform: translate(-48%, -50%) rotate(-10deg); }
+            50% { transform: translate(-50%, -48%) rotate(10deg); }
+            75% { transform: translate(-52%, -50%) rotate(-10deg); }
+        }
     </style>
 </head>
 <body>
@@ -62,19 +75,51 @@
     <h1>I Love You, Kavya CJ ❤️</h1>
     <p>You are my happiness, my love, and my forever pharmacist! 🥰</p>
     <p>Even if I had a prescription for love, you’d be the only medicine I need! 💊❤️</p>
-    <button class="love-button" onclick="alert('Love you more than anything! ❤️')">Click Me! 😘</button>
+    
+    <!-- Big heart that shakes -->
+    <div class="big-heart" id="bigHeart">❤️</div>
+
+    <button class="love-button" onclick="shakeHeart()">Click Me! 😘</button>
 
     <script>
-        function createHeart() {
+        function createHeart(color) {
             const heart = document.createElement('div');
             heart.classList.add('heart');
             heart.innerHTML = '❤️';
             heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.color = color || 'red';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
             heart.style.animationDuration = Math.random() * 2 + 3 + 's';
             document.getElementById('hearts').appendChild(heart);
             setTimeout(() => { heart.remove(); }, 5000);
         }
-        setInterval(createHeart, 500);
+
+        setInterval(() => createHeart(), 500);
+
+        let clickCount = 0;
+
+        function shakeHeart() {
+            const bigHeart = document.getElementById('bigHeart');
+            bigHeart.style.animation = 'shake 0.5s ease-in-out';
+
+            setTimeout(() => {
+                bigHeart.style.animation = '';
+            }, 500);
+
+            clickCount++;
+
+            if (clickCount > 3) {
+                for (let i = 0; i < 20; i++) {
+                    createHeart(getRandomColor());
+                }
+                clickCount = 0; // Reset count after bursting
+            }
+        }
+
+        function getRandomColor() {
+            const colors = ['red', 'pink', 'blue', 'purple', 'orange', 'yellow'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
     </script>
 </body>
 </html>
