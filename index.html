@@ -6,120 +6,161 @@
     <title>For My Love Kavya CJ ❤️</title>
     <style>
         body {
-            background-color: #ffe6f2;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
             text-align: center;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            margin: 0;
+            font-family: 'Comic Sans MS', cursive;
             overflow: hidden;
+            margin: 0;
         }
+
         h1 {
-            font-size: 3rem;
-            color: #ff3366;
-            margin-top: 20px;
+            font-size: 3.5rem;
+            color: white;
+            text-shadow: 3px 3px 20px #ff3366;
+            margin-top: 50px;
+            animation: glow 2s infinite alternate;
         }
+
+        @keyframes glow {
+            0% { text-shadow: 3px 3px 10px #ff3366; }
+            100% { text-shadow: 3px 3px 30px #ff0066; }
+        }
+
         p {
-            font-size: 1.5rem;
-            color: #cc0066;
+            font-size: 1.8rem;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(255, 0, 102, 0.6);
         }
+
         .heart-container {
             position: absolute;
             width: 100%;
             height: 100%;
             overflow: hidden;
         }
+
         .heart {
             position: absolute;
             font-size: 2rem;
+            color: red;
             animation: float 5s infinite ease-in-out;
         }
+
         @keyframes float {
             0% { transform: translateY(100vh) scale(0.5); opacity: 0.5; }
             100% { transform: translateY(-10vh) scale(1.5); opacity: 1; }
         }
+
+        .big-heart {
+            font-size: 120px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: heartbeat 1.5s infinite alternate;
+            cursor: pointer;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            100% { transform: translate(-50%, -50%) scale(1.2); }
+        }
+
         .love-button {
-            display: inline-block;
-            padding: 15px 30px;
-            font-size: 1.2rem;
+            padding: 20px 40px;
+            font-size: 1.5rem;
             font-weight: bold;
-            background-color: #ff3366;
+            background: linear-gradient(45deg, #ff6699, #ff3366);
             color: white;
-            border-radius: 30px;
+            border-radius: 50px;
             border: none;
             cursor: pointer;
             margin-top: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, background-color 0.3s;
+            box-shadow: 0 0 15px rgba(255, 51, 102, 0.7);
+            transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
         }
+
         .love-button:hover {
             transform: scale(1.1);
-            background-color: #cc0066;
+            background: linear-gradient(45deg, #ff3366, #ff0033);
+            box-shadow: 0 0 25px rgba(255, 0, 51, 0.9);
         }
-        .big-heart {
-            font-size: 100px;
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: none;
-        }
-        @keyframes shake {
-            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
-            25% { transform: translate(-48%, -50%) rotate(-10deg); }
-            50% { transform: translate(-50%, -48%) rotate(10deg); }
-            75% { transform: translate(-52%, -50%) rotate(-10deg); }
+
+        .hidden-message {
+            font-size: 2rem;
+            color: white;
+            text-shadow: 2px 2px 5px #ff3366;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
     <div class="heart-container" id="hearts"></div>
-    <h1>I Love You, Kavya CJ ❤️</h1>
-    <p>You are my happiness, my love, and my forever pharmacist! 🥰</p>
-    <p>Even if I had a prescription for love, you’d be the only medicine I need! 💊❤️</p>
-    
-    <!-- Big heart that shakes -->
-    <div class="big-heart" id="bigHeart">❤️</div>
+    <h1>💖 I Love You, Kavya CJ! 💖</h1>
+    <p>You are my happiness, my heart, my everything! 💑</p>
 
-    <button class="love-button" onclick="shakeHeart()">Click Me! 😘</button>
+    <!-- Big heart that beats and explodes -->
+    <div class="big-heart" id="bigHeart" onclick="explodeLove()">💖</div>
+
+    <button class="love-button" onclick="revealMessage()">Press Me! 💘</button>
+
+    <p class="hidden-message" id="secretMessage">💕 You are my forever love, Kavya CJ! 💕</p>
 
     <script>
-        function createHeart(color) {
+        function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart');
             heart.innerHTML = '❤️';
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.color = color || 'red';
             heart.style.fontSize = Math.random() * 20 + 10 + 'px';
             heart.style.animationDuration = Math.random() * 2 + 3 + 's';
             document.getElementById('hearts').appendChild(heart);
             setTimeout(() => { heart.remove(); }, 5000);
         }
+        setInterval(createHeart, 500);
 
-        setInterval(() => createHeart(), 500);
-
-        let clickCount = 0;
-
-        function shakeHeart() {
+        function explodeLove() {
             const bigHeart = document.getElementById('bigHeart');
-            bigHeart.style.animation = 'shake 0.5s ease-in-out';
+            bigHeart.innerHTML = "💥";
+            setTimeout(() => { bigHeart.innerHTML = "💖"; }, 500);
 
-            setTimeout(() => {
-                bigHeart.style.animation = '';
-            }, 500);
-
-            clickCount++;
-
-            if (clickCount > 3) {
-                for (let i = 0; i < 20; i++) {
-                    createHeart(getRandomColor());
-                }
-                clickCount = 0; // Reset count after bursting
+            for (let i = 0; i < 20; i++) {
+                createHeartBurst();
             }
         }
 
-        function getRandomColor() {
-            const colors = ['red', 'pink', 'blue', 'purple', 'orange', 'yellow'];
-            return colors[Math.floor(Math.random() * colors.length)];
+        function createHeartBurst() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '💖';
+            heart.style.position = 'absolute';
+            heart.style.left = '50%';
+            heart.style.top = '50%';
+            heart.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
+            heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+            heart.style.animation = `burst 1s ease-out forwards`;
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 1000);
         }
+
+        function revealMessage() {
+            document.getElementById("secretMessage").style.opacity = 1;
+        }
+
+        document.body.addEventListener("click", function(e) {
+            let burst = document.createElement("div");
+            burst.innerText = "❤️";
+            burst.style.position = "absolute";
+            burst.style.left = e.pageX + "px";
+            burst.style.top = e.pageY + "px";
+            burst.style.fontSize = "30px";
+            burst.style.opacity = 1;
+            burst.style.transition = "all 1s ease-out";
+            document.body.appendChild(burst);
+            setTimeout(() => { burst.style.opacity = 0; burst.remove(); }, 1000);
+        });
     </script>
 </body>
 </html>
