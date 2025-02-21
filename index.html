@@ -3,145 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JMP Medical Centre</title>
-    <link rel="stylesheet" href="css/index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <img src="images/jmplogo.png" alt="JMP Logo" style="max-width: 100px;">
-        <h1>JMP Medical Centre</h1>
-        <p>Managed by Peace Foundation</p>
-        <address>
-            Piravom, Ernakulam, 686664, Kerala
-        </address>
-    </header>
-
-    <!-- Navigation -->
-    <div class="menu-container">
-        <button id="menu-toggle" aria-label="Toggle Navigation Menu">
-            <span class="menu-icon">&#9776;</span> Menu
-        </button>
-        <nav id="menu" class="hidden" aria-label="Main Navigation">
-            <ul>
-                <li><a href="#overview">About Us</a></li>
-                <li><a href="doctors-and-department.html">Departments & Doctors</a></li>
-                <li><a href="surgeries.html">Surgeries</a></li>
-                <li><a href="services.html">Our Services</a></li>
-                <li><a href="services.html#24-Hour Services">24-Hour Services</a></li>
-                <li><a href="insurance.html">Insurance</a></li>
-                <li><a href="careers.html">Careers</a></li>
-                <li><a href="reviews.html">Reviews & Suggestions</a></li>
-            </ul>
-        </nav>
-    </div>
-
-    <!-- Banner Section -->
-    <div class="banner">
-        <h2>Innovative Care & Inspiring Wellness</h2>
-        <!-- Scrolling Contact Section -->
-        <div class="scroll-text-container" style="background: linear-gradient(to right, #0056b3, #003366); color: #ffc107;">
-            <div class="scroll-wrapper" style="animation: scrollText 12s linear infinite;">
-                <span class="scroll-text">
-                    📞 For Bookings Call: 0485 2243443 | 2242727 | 2241274 &nbsp;&nbsp;&nbsp;
-                </span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Overview Section -->
-    <section id="overview" class="overview-section">
-        <h2>About Us</h2>
-        <p>
-            PEACE FOUNDATION (Pachomios Educational And Charitable Enlightenment Foundation) was established to perpetuate 
-            the sacred memory of His Grace Joseph Mar Pachomios on <strong>24th July 1997</strong>. Under the patronage of 
-            St. George Orthodox Syrian Church, Karmelkunnu, Mulakulam (N), this foundation prioritizes health care with its 
-            multi-specialty hospital in Piravom.
-        </p>
-        <h3>Our Mission</h3>
-        <p>
-            To provide state-of-the-art medical attention at affordable expenses, catering to the healthcare needs of the 
-            inhabitants of Piravom and surrounding areas.
-        </p>
-        <a href="services.html" class="cta-button">Explore Our Services</a>
-    </section>
-
-    <!-- Image Section -->
-    <section class="image-section" style="text-align: center;">
-        <img src="images/back.png" alt="JMP Medical Centre" style="max-width: 100%; border-radius: 8px;">
-    </section>
-
-    <!-- Address Section -->
-    <section class="address-section">
-        <h2>Contact Us</h2>
-        <address>
-            JMP Medical Centre, Kakkad P.O., Piravom, Kerala 686664
-        </address>
-        <a href="https://maps.app.goo.gl/pA925zdsK1QT9Rfa7" target="_blank" class="get-directions-button">Get Directions</a>
-    </section>
-
-    <!-- Floating Buttons -->
-    <div class="floating-buttons">
-        <button class="floating-button call-button" onclick="dialNumber('+914852241274')">
-            📞 Book Appointments
-        </button>
-        <button class="floating-button ambulance-button" onclick="dialNumber('+919947621789')">
-            🚑 Ambulance Service (24hrs)
-        </button>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 JMP Medical Centre. All rights reserved.</p>
-    </footer>
-
-    <!-- JavaScript -->
-    <script>
-        // Toggle Navigation Menu
-        document.getElementById('menu-toggle').addEventListener('click', function () {
-            const menu = document.getElementById('menu');
-            menu.classList.toggle('hidden');
-        });
-
-        // Dial Number Functionality
-        function dialNumber(tel) {
-            window.location.href = `tel:${tel}`;
-        }
-    </script>
-
-    <!-- CSS Animation for Scrolling -->
+    <title>For My Love Kavya CJ ❤️</title>
     <style>
-        .scroll-text-container {
-            overflow: hidden;
-            padding: 10px 0;
-            margin: 10px auto;
-            border-radius: 8px;
+        body {
+            background-color: #ffe6f2;
             text-align: center;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            overflow: hidden;
         }
-
-        .scroll-wrapper {
+        h1 {
+            font-size: 3rem;
+            color: #ff3366;
+            margin-top: 20px;
+        }
+        p {
+            font-size: 1.5rem;
+            color: #cc0066;
+        }
+        .heart-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 2rem;
+            animation: float 5s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0.5; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 1; }
+        }
+        .love-button {
             display: inline-block;
-            white-space: nowrap;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background-color: #ff3366;
+            color: white;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, background-color 0.3s;
         }
-
-        @keyframes scrollText {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .get-directions-button {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #1d3557;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
+        .love-button:hover {
+            transform: scale(1.1);
+            background-color: #cc0066;
         }
     </style>
+</head>
+<body>
+    <div class="heart-container" id="hearts"></div>
+    <h1>I Love You, Kavya CJ ❤️</h1>
+    <p>You are my happiness, my love, and my forever pharmacist! 🥰</p>
+    <p>Even if I had a prescription for love, you’d be the only medicine I need! 💊❤️</p>
+    <button class="love-button" onclick="alert('Love you more than anything! ❤️')">Click Me! 😘</button>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.getElementById('hearts').appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 500);
+    </script>
 </body>
 </html>
