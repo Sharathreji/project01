@@ -6,24 +6,24 @@
     <title>For My Love Kavya Jagadeesh ❤️</title>
     <style>
         body {
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            background: radial-gradient(circle, #ff9a9e, #fad0c4);
             text-align: center;
-            font-family: 'Comic Sans MS', cursive;
+            font-family: 'Poppins', sans-serif;
             overflow: hidden;
             margin: 0;
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             color: white;
-            text-shadow: 3px 3px 20px #ff3366;
+            text-shadow: 0 0 20px #ff3366, 0 0 40px #ff0066;
             margin-top: 50px;
             animation: glow 2s infinite alternate;
         }
 
         @keyframes glow {
-            0% { text-shadow: 3px 3px 10px #ff3366; }
-            100% { text-shadow: 3px 3px 30px #ff0066; }
+            0% { text-shadow: 0 0 20px #ff3366; }
+            100% { text-shadow: 0 0 40px #ff0066; }
         }
 
         p {
@@ -131,7 +131,7 @@
     <p class="hidden-message" id="secretMessage">💕 You are my forever love, Kavya Jagadeesh! 💕</p>
 
     <!-- Cute Panda -->
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Giant_Panda_in_Beijing_Zoo_2.JPG/320px-Giant_Panda_in_Beijing_Zoo_2.JPG" 
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/320px-Grosser_Panda.JPG" 
          alt="Cute Panda" class="panda" id="panda" onclick="pandaReact()">
 
     <script>
@@ -152,7 +152,7 @@
             bigHeart.innerHTML = "💥";
             setTimeout(() => { bigHeart.innerHTML = "💖"; }, 500);
 
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 50; i++) {
                 createHeartBurst();
             }
         }
@@ -162,9 +162,8 @@
             heart.classList.add('heart');
             heart.innerHTML = '💖';
             heart.style.position = 'absolute';
-            heart.style.left = '50%';
-            heart.style.top = '50%';
-            heart.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = Math.random() * 100 + 'vh';
             heart.style.fontSize = Math.random() * 20 + 20 + 'px';
             heart.style.animation = `burst 1s ease-out forwards`;
             document.body.appendChild(heart);
