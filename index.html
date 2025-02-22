@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Love Kavya Jagadeesh ❤️</title>
+    <title>I'm Sorry, Kavya 💔</title>
     <style>
         body {
             background: radial-gradient(circle, #ff9a9e, #fad0c4);
@@ -14,7 +14,7 @@
         }
 
         h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             color: white;
             text-shadow: 0 0 20px #ff3366, 0 0 40px #ff0066;
             margin-top: 50px;
@@ -27,7 +27,7 @@
         }
 
         p {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: white;
             text-shadow: 2px 2px 5px rgba(255, 0, 102, 0.6);
         }
@@ -51,31 +51,52 @@
             100% { transform: translateY(-10vh) scale(1.5); opacity: 1; }
         }
 
-        .big-heart {
-            font-size: 120px;
+        .apology-note {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            width: 60%;
+            margin: 20px auto;
+            font-size: 1.8rem;
+            font-family: 'Caveat', cursive;
+            box-shadow: 0 0 15px rgba(255, 51, 102, 0.7);
+            transition: transform 0.3s;
+        }
+
+        .apology-note:hover {
+            transform: scale(1.05);
+        }
+
+        /* Forgive Me Button */
+        .forgive-button {
+            padding: 15px 35px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6699, #ff3366);
+            color: white;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 0 15px rgba(255, 51, 102, 0.7);
+            transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .forgive-button:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg, #ff3366, #ff0033);
+            box-shadow: 0 0 25px rgba(255, 0, 51, 0.9);
+        }
+
+        .forgive-button.moving {
             position: absolute;
-            top: 55%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            animation: heartbeat 1.5s infinite alternate;
-            cursor: pointer;
         }
 
-        @keyframes heartbeat {
-            0% { transform: translate(-50%, -50%) scale(1); }
-            100% { transform: translate(-50%, -50%) scale(1.2); }
-        }
-
-        .hidden-message {
-            font-size: 2rem;
-            color: white;
-            text-shadow: 2px 2px 5px #ff3366;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            margin-top: 30px;
-        }
-
-        /* Cute Panda */
+        /* Cute Sad Panda */
         .panda {
             width: 150px;
             height: auto;
@@ -98,19 +119,22 @@
 </head>
 <body>
     <div class="heart-container" id="hearts"></div>
-    <h1>💖 I Love You, Kavya Jagadeesh! 💖</h1>
-    <p>You are my happiness, my heart, my everything! 💑</p>
-    <p>Even if I had a prescription for love, you would be the only medicine I need ❤‍🩹</p>
-    <p>💘 Sorry that I didn't do this for Valentine's Day... 😔💘</p>
+    <h1>💔 I'm So Sorry, Kavya 💔</h1>
+    <p>I never meant to hurt you... You're my happiness, my heart, my everything! 💑</p>
 
-    <!-- Big heart that beats and explodes -->
-    <div class="big-heart" id="bigHeart" onclick="explodeLove()">💖</div>
+    <!-- Apology Note -->
+    <div class="apology-note">
+        "I messed up, and I'm really sorry. If I could go back and change things, I would in a heartbeat.  
+        But for now, all I can do is promise to be better and make it up to you.  
+        Please forgive me, my love... I miss your smile. 💖"
+    </div>
 
-    <p class="hidden-message" id="secretMessage">💕 You are my forever love, Kavya Jagadeesh! 💕</p>
+    <!-- Playful "Forgive Me?" Button -->
+    <button class="forgive-button" id="forgiveButton" onclick="showLove()">Forgive Me? 😢</button>
 
-    <!-- Cute Panda -->
+    <!-- Sad Panda -->
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/320px-Grosser_Panda.JPG" 
-         alt="Cute Panda" class="panda" id="panda" onclick="pandaReact()">
+         alt="Sad Panda" class="panda" id="panda" onclick="pandaReact()">
 
     <script>
         function createHeart() {
@@ -123,18 +147,17 @@
             document.getElementById('hearts').appendChild(heart);
             setTimeout(() => { heart.remove(); }, 5000);
         }
-        setInterval(createHeart, 500);
+        setInterval(createHeart, 700);
 
-        function explodeLove() {
-            const bigHeart = document.getElementById('bigHeart');
-            bigHeart.innerHTML = "";
-            setTimeout(() => { bigHeart.innerHTML = "💖"; }, 500);
+        function showLove() {
+            const button = document.getElementById("forgiveButton");
+            button.innerHTML = "Yay! I Love You! 💖";
+            button.style.background = "linear-gradient(45deg, #66ff99, #33cc66)";
+            button.style.boxShadow = "0 0 25px rgba(51, 204, 102, 0.9)";
 
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 20; i++) {
                 createHeartBurst();
             }
-
-            document.getElementById("secretMessage").style.opacity = 1;
         }
 
         function createHeartBurst() {
@@ -151,7 +174,7 @@
         }
 
         function pandaReact() {
-            alert("🐼 The panda loves you too, Kavya! 💖");
+            alert("🐼 This panda says... Please forgive him, Kavya! 💖");
         }
     </script>
 </body>
