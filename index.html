@@ -80,40 +80,12 @@
             margin-top: 20px;
             box-shadow: 0 0 15px rgba(255, 51, 102, 0.7);
             transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
-            position: relative;
         }
 
         .forgive-button:hover {
             transform: scale(1.1);
             background: linear-gradient(45deg, #ff3366, #ff0033);
             box-shadow: 0 0 25px rgba(255, 0, 51, 0.9);
-        }
-
-        .forgive-button.moving {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        /* Cute Sad Panda */
-        .panda {
-            width: 150px;
-            height: auto;
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            transition: transform 0.3s ease-in-out;
-            cursor: pointer;
-        }
-
-        .panda:hover {
-            transform: translateX(-50%) scale(1.1);
-        }
-
-        .panda:active {
-            transform: translateX(-50%) rotate(10deg) scale(1.2);
         }
     </style>
 </head>
@@ -129,12 +101,8 @@
         Please forgive me, my love... I miss your smile. 💖"
     </div>
 
-    <!-- Playful "Forgive Me?" Button -->
+    <!-- "Forgive Me?" Button -->
     <button class="forgive-button" id="forgiveButton" onclick="showLove()">Forgive Me? 😢</button>
-
-    <!-- Sad Panda -->
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/320px-Grosser_Panda.JPG" 
-         alt="Sad Panda" class="panda" id="panda" onclick="pandaReact()">
 
     <script>
         function createHeart() {
@@ -171,10 +139,6 @@
             heart.style.animation = `burst 1s ease-out forwards`;
             document.body.appendChild(heart);
             setTimeout(() => { heart.remove(); }, 1000);
-        }
-
-        function pandaReact() {
-            alert("🐼 This panda says... Please forgive him, Kavya! 💖");
         }
     </script>
 </body>
