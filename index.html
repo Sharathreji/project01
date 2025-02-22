@@ -37,6 +37,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
+            z-index: -1;
         }
 
         .heart {
@@ -87,6 +88,12 @@
             background: linear-gradient(45deg, #ff3366, #ff0033);
             box-shadow: 0 0 25px rgba(255, 0, 51, 0.9);
         }
+
+        /* Heart Burst Effect */
+        @keyframes burst {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(3); opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -124,7 +131,7 @@
             button.style.boxShadow = "0 0 25px rgba(51, 204, 102, 0.9)";
 
             for (let i = 0; i < 20; i++) {
-                createHeartBurst();
+                setTimeout(createHeartBurst, i * 100);
             }
         }
 
