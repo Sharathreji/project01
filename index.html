@@ -3,150 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I'm Sorry, Kavya 💔</title>
-    <style>
-        body {
-            background: radial-gradient(circle, #ff9a9e, #fad0c4);
-            text-align: center;
-            font-family: 'Poppins', sans-serif;
-            overflow: hidden;
-            margin: 0;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            color: white;
-            text-shadow: 0 0 20px #ff3366, 0 0 40px #ff0066;
-            margin-top: 50px;
-            animation: glow 2s infinite alternate;
-        }
-
-        @keyframes glow {
-            0% { text-shadow: 0 0 20px #ff3366; }
-            100% { text-shadow: 0 0 40px #ff0066; }
-        }
-
-        p {
-            font-size: 1.5rem;
-            color: white;
-            text-shadow: 2px 2px 5px rgba(255, 0, 102, 0.6);
-        }
-
-        .heart-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }
-
-        .heart {
-            position: absolute;
-            font-size: 2rem;
-            color: red;
-            animation: float 5s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) scale(0.5); opacity: 0.5; }
-            100% { transform: translateY(-10vh) scale(1.5); opacity: 1; }
-        }
-
-        .apology-note {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 15px;
-            padding: 20px;
-            width: 60%;
-            margin: 20px auto;
-            font-size: 1.8rem;
-            font-family: 'Caveat', cursive;
-            box-shadow: 0 0 15px rgba(255, 51, 102, 0.7);
-            transition: transform 0.3s;
-        }
-
-        .apology-note:hover {
-            transform: scale(1.05);
-        }
-
-        /* Forgive Me Button */
-        .forgive-button {
-            padding: 15px 35px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #ff6699, #ff3366);
-            color: white;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
-            margin-top: 20px;
-            box-shadow: 0 0 15px rgba(255, 51, 102, 0.7);
-            transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
-        }
-
-        .forgive-button:hover {
-            transform: scale(1.1);
-            background: linear-gradient(45deg, #ff3366, #ff0033);
-            box-shadow: 0 0 25px rgba(255, 0, 51, 0.9);
-        }
-
-        /* Heart Burst Effect */
-        @keyframes burst {
-            0% { transform: scale(0); opacity: 1; }
-            100% { transform: scale(3); opacity: 0; }
-        }
-    </style>
+    <title>I Miss You, Kavya ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(45deg, #ff758c, #ff7eb3);
+    text-align: center;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+#typing-text {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.heart-animation {
+    width: 50px;
+    height: 50px;
+    background: red;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    animation: heartRain 5s infinite;
+}
+
+@keyframes heartRain {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(500px); opacity: 0; }
+}
+
+.love-button {
+    background: #ff4a6e;
+    padding: 15px 30px;
+    border: none;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.love-button:hover {
+    background: #ff1e4a;
+}
+
+.pickup-lines {
+    margin-top: 30px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.countdown {
+    margin-top: 30px;
+    font-size: 1.5em;
+}
+
+.slideshow img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    background: white;
+    color: black;
+    margin: 10% auto;
+    padding: 20px;
+    width: 50%;
+    border-radius: 10px;
+}
+.close {
+    font-size: 30px;
+    cursor: pointer;
+}
+</style>
 <body>
-    <div class="heart-container" id="hearts"></div>
-    <h1>💔 I'm So Sorry, Kavya 💔</h1>
-    <p>I never meant to hurt you... You're my happiness, my heart, my everything! 💑</p>
+    <audio autoplay loop>
+        <source src="love_song.mp3" type="audio/mp3">
+    </audio>
 
-    <!-- Apology Note -->
-    <div class="apology-note">
-        "I messed up, and I'm really sorry. If I could go back and change things, I would in a heartbeat.  
-        But for now, all I can do is promise to be better and make it up to you.  
-        Please forgive me, my love... I miss your smile. 💖"
+    <div class="container">
+        <h1 id="typing-text"></h1>
+        <div class="heart-animation"></div>
+
+        <button class="love-button" onclick="showLoveLetter()">Click for a Surprise ❤️</button>
+
+        <div class="pickup-lines">
+            <h2>Pharmacy Love for Kavya 💊❤️</h2>
+            <ul id="lines-list"></ul>
+        </div>
+
+        <div class="countdown">
+            <h2>Time Since We Last Met:</h2>
+            <p id="timer"></p>
+        </div>
+
+        <div class="slideshow">
+            <img id="slideshow-img" src="photo1.jpg" alt="Our Memory">
+        </div>
+
+        <div class="modal" id="love-letter">
+            <div class="modal-content">
+                <span class="close" onclick="closeLoveLetter()">&times;</span>
+                <h2>My Love Letter to You ❤️</h2>
+                <p>Dear Kavya, you are my favorite dose of happiness. I miss you more than words can say...</p>
+            </div>
+        </div>
     </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    typeWriterEffect();
+    displayPickupLines();
+    startCountdown();
+    startSlideshow();
+});
 
-    <!-- "Forgive Me?" Button -->
-    <button class="forgive-button" id="forgiveButton" onclick="showLove()">Forgive Me? 😢</button>
-
-    <script>
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
-            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
-            document.getElementById('hearts').appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 5000);
+function typeWriterEffect() {
+    let text = "I Miss You, Kavya ❤️";
+    let i = 0;
+    let speed = 100;
+    function type() {
+        if (i < text.length) {
+            document.getElementById("typing-text").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
         }
-        setInterval(createHeart, 700);
+    }
+    type();
+}
 
-        function showLove() {
-            const button = document.getElementById("forgiveButton");
-            button.innerHTML = "Yay! I Love You! 💖";
-            button.style.background = "linear-gradient(45deg, #66ff99, #33cc66)";
-            button.style.boxShadow = "0 0 25px rgba(51, 204, 102, 0.9)";
+function displayPickupLines() {
+    const lines = [
+        "Are you a pharmacist? Because you just cured my loneliness.",
+        "You must be ibuprofen, because you make my pain go away.",
+        "Are you paracetamol? Because you make my heart feel better.",
+        "Are you a capsule? Because I want to keep you close to my heart.",
+        "Are you a prescription? Because my heart needs you regularly.",
+        "You must be an antibiotic, because my love for you only grows stronger!",
+        "Without you, my life is like a pharmacy without medicine—empty!",
+        "Are you vitamin C? Because you brighten up my days!",
+        "You’re my daily dose of happiness!",
+        "You must be a pharmacist, because you’ve got the perfect formula for my heart."
+    ];
+    
+    let list = document.getElementById("lines-list");
+    lines.forEach(line => {
+        let li = document.createElement("li");
+        li.innerText = line;
+        list.appendChild(li);
+    });
+}
 
-            for (let i = 0; i < 20; i++) {
-                setTimeout(createHeartBurst, i * 100);
-            }
-        }
+function startCountdown() {
+    let lastMetDate = new Date("2024-02-14");
+    function updateTimer() {
+        let now = new Date();
+        let difference = now - lastMetDate;
+        let days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        document.getElementById("timer").innerText = days + " days ago!";
+    }
+    updateTimer();
+    setInterval(updateTimer, 1000);
+}
 
-        function createHeartBurst() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = '💖';
-            heart.style.position = 'absolute';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.top = Math.random() * 100 + 'vh';
-            heart.style.fontSize = Math.random() * 20 + 20 + 'px';
-            heart.style.animation = `burst 1s ease-out forwards`;
-            document.body.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 1000);
-        }
-    </script>
+function startSlideshow() {
+    let images = ["photo1.jpg", "photo2.jpg", "photo3.jpg"];
+    let index = 0;
+    function changeImage() {
+        document.getElementById("slideshow-img").src = images[index];
+        index = (index + 1) % images.length;
+    }
+    setInterval(changeImage, 3000);
+}
+
+function showLoveLetter() {
+    document.getElementById("love-letter").style.display = "block";
+}
+
+function closeLoveLetter() {
+    document.getElementById("love-letter").style.display = "none";
+}
+</script>
+
 </body>
 </html>
