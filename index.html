@@ -67,26 +67,40 @@
         #no:hover {
             background-color: #999999;
         }
-        .hearts {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            background: red;
-            clip-path: polygon(50% 0%, 100% 35%, 75% 100%, 50% 80%, 25% 100%, 0% 35%);
-            opacity: 0.8;
-            animation: float 2s ease-in-out infinite;
+        .celebration {
+            width: 300px;
+            height: 300px;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: gold;
+            color: white;
+            font-weight: bold;
+            border: 5px solid #ff0066;
+            border-radius: 20px;
+            animation: shake 0.5s infinite alternate, glow 1s infinite alternate;
         }
-        @keyframes float {
-            0% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-50px) scale(1.2); }
-            100% { transform: translateY(-100px) scale(0.8); opacity: 0; }
-        }
-        .shiny {
-            animation: glow 1s infinite alternate;
+        @keyframes shake {
+            0% { transform: rotate(-2deg); }
+            100% { transform: rotate(2deg); }
         }
         @keyframes glow {
             0% { box-shadow: 0 0 10px #ff0066; }
             100% { box-shadow: 0 0 30px #ff3399; }
+        }
+        .firework {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: explode 1s ease-out forwards;
+        }
+        @keyframes explode {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(10); opacity: 0; }
         }
     </style>
 </head>
@@ -96,7 +110,7 @@
     <div class="proposal-box">
         <p>Without you, my heart is like a pharmacy without medicine. Marry me and be my daily dose of love? 🥰</p>
         <div class="buttons">
-            <button id="yes" class="btn" style="width: 60px; height: 40px;">Yes 💖</button>
+            <button id="yes" class="btn" style="width: 80px; height: 50px;">Yes 💖</button>
             <button id="no" class="btn" style="left: 50%; top: 50%;">No 😢</button>
         </div>
     </div>
@@ -105,27 +119,39 @@
         let yesButton = document.getElementById("yes");
         let noButton = document.getElementById("no");
         let clickCount = 0;
-        let positions = ["top:10px; left:50%;", "bottom:10px; left:50%;", "left:10px; top:50%;", "right:10px; top:50%;"];
+        let positions = [
+            { top: "10px", left: "50%" },
+            { bottom: "10px", left: "50%" },
+            { left: "10px", top: "50%" },
+            { right: "10px", top: "50%" }
+        ];
 
         noButton.addEventListener("click", function() {
             clickCount++;
-            let newSize = 60 + clickCount * 30; // Increase width
-            let newHeight = 40 + clickCount * 20; // Increase height
+            let newSize = 80 + clickCount * 30;
+            let newHeight = 50 + clickCount * 20;
 
             yesButton.style.width = newSize + "px";
             yesButton.style.height = newHeight + "px";
             yesButton.style.fontSize = (16 + clickCount * 2) + "px";
 
-            let randomPosition = positions[Math.floor(Math.random() * positions.length)];
-            noButton.style.cssText = randomPosition;
+            let newPos;
+            do {
+                newPos = positions[Math.floor(Math.random() * positions.length)];
+            } while (newPos.left === noButton.style.left && newPos.top === noButton.style.top);
+
+            noButton.style.left = newPos.left;
+            noButton.style.top = newPos.top;
 
             if (clickCount >= 5) {
-                yesButton.style.width = "100vw";
-                yesButton.style.height = "100vh";
-                yesButton.style.fontSize = "8vw";
-                yesButton.style.borderRadius = "50%";
-                yesButton.innerText = "You have no choice but to say YES! 💖";
+                yesButton.classList.add("celebration");
+                yesButton.style.width = "300px";
+                yesButton.style.height = "300px";
+                yesButton.style.fontSize = "30px";
+                yesButton.style.borderRadius = "20px";
+                yesButton.innerText = "You have no choice but to say YES! 🎉";
                 noButton.style.display = "none";
+                launchFireworks();
             }
         });
 
@@ -133,14 +159,26 @@
             yesButton.classList.add("shiny");
             for (let i = 0; i < 20; i++) {
                 let heart = document.createElement("div");
-                heart.classList.add("hearts");
+                heart.classList.add("firework");
                 heart.style.left = Math.random() * window.innerWidth + "px";
                 heart.style.top = Math.random() * window.innerHeight + "px";
-                heart.style.animationDuration = Math.random() * 2 + 1 + "s";
                 document.body.appendChild(heart);
-                setTimeout(() => { heart.remove(); }, 2000);
+                setTimeout(() => { heart.remove(); }, 1000);
             }
         });
+
+        function launchFireworks() {
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    let firework = document.createElement("div");
+                    firework.classList.add("firework");
+                    firework.style.left = Math.random() * window.innerWidth + "px";
+                    firework.style.top = Math.random() * window.innerHeight + "px";
+                    document.body.appendChild(firework);
+                    setTimeout(() => { firework.remove(); }, 1000);
+                }, i * 200);
+            }
+        }
     </script>
 
 </body>
