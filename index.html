@@ -40,7 +40,7 @@
             background-color: #ff3399;
             color: white;
             border-radius: 20px;
-            transition: 0.5s ease-in-out;
+            transition: transform 0.5s ease-in-out;
         }
         #no {
             background-color: #cccccc;
@@ -55,7 +55,7 @@
             background-color: #999999;
         }
         .yes-grow {
-            transform: scale(1.5);
+            transform: scale(2);
         }
         .yes-balloon {
             position: fixed;
@@ -66,10 +66,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: 1s ease-in-out;
+            transition: all 1s ease-in-out;
         }
         .no-hide {
             transform: translateX(-150vw);
+            opacity: 0;
         }
         .hearts {
             position: fixed;
@@ -112,9 +113,9 @@
 
         noButton.addEventListener("click", function() {
             clickCount++;
-            yesButton.style.transform = `scale(${1.5 + clickCount * 0.5})`;
+            yesButton.style.transform = `scale(${1 + clickCount * 0.5})`;
 
-            if (clickCount >= 4) {
+            if (clickCount >= 5) {
                 yesButton.classList.add("yes-balloon");
                 noButton.classList.add("no-hide");
             }
