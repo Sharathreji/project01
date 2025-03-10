@@ -114,6 +114,19 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+        /* Heart Animation */
+        .heart {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: red;
+            clip-path: polygon(50% 0%, 100% 35%, 75% 100%, 50% 80%, 25% 100%, 0% 35%);
+            animation: floatUp 2s ease-in-out infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -161,12 +174,26 @@
                 yesButton.style.fontSize = "24px";
                 yesButton.innerText = "You have no choice but to say YES! 🎉";
                 noButton.style.display = "none";
+                launchHearts();
             }
         });
 
         yesButton.addEventListener("click", function() {
-            yesButton.classList.add("shiny");
+            launchHearts();
         });
+
+        function launchHearts() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    let heart = document.createElement("div");
+                    heart.classList.add("heart");
+                    heart.style.left = Math.random() * window.innerWidth + "px";
+                    heart.style.top = Math.random() * window.innerHeight + "px";
+                    document.body.appendChild(heart);
+                    setTimeout(() => { heart.remove(); }, 2000);
+                }, i * 100);
+            }
+        }
     </script>
 
 </body>
