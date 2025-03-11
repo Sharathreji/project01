@@ -84,7 +84,7 @@
 
     <div class="button-container">
         <button class="yes" onclick="celebrate()">Yes</button>
-        <button class="no" onclick="moveNoButton()">No</button>
+        <button class="no" onclick="runNoButton()">No</button>
     </div>
 
     <div class="hearts" id="hearts"></div>
@@ -93,17 +93,25 @@
     <audio id="yesSound" src="https://www.myinstants.com/media/sounds/tada-fanfare.mp3"></audio>
 
     <script>
-        function moveNoButton() {
-            let noButton = document.querySelector('.no');
-            let screenWidth = window.innerWidth - noButton.clientWidth - 20; 
-            let screenHeight = window.innerHeight - noButton.clientHeight - 20; 
-            let x = Math.random() * screenWidth;
-            let y = Math.random() * screenHeight;
-            noButton.style.left = `${x}px`;
-            noButton.style.top = `${y}px`;
+        let moveCount = 0;
+        const maxMoves = 7; // Number of times the "No" button runs before disappearing
 
+        function runNoButton() {
+            let noButton = document.querySelector('.no');
             let noSound = document.getElementById("noSound");
-            noSound.play();
+
+            if (moveCount < maxMoves) {
+                moveCount++;
+                let screenWidth = window.innerWidth - noButton.clientWidth - 20; 
+                let screenHeight = window.innerHeight - noButton.clientHeight - 20; 
+                let x = Math.random() * screenWidth;
+                let y = Math.random() * screenHeight;
+                noButton.style.left = `${x}px`;
+                noButton.style.top = `${y}px`;
+                noSound.play();
+            } else {
+                noButton.style.display = "none"; // Disappear after 7 moves
+            }
         }
 
         function celebrate() {
