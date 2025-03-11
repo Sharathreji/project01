@@ -84,7 +84,7 @@
 
     <div class="button-container">
         <button class="yes" onclick="celebrate()">Yes</button>
-        <button class="no" onclick="runNoButton()">No</button>
+        <button class="no" id="noButton" onclick="runNoButton()">No</button>
     </div>
 
     <div class="hearts" id="hearts"></div>
@@ -94,10 +94,10 @@
 
     <script>
         let moveCount = 0;
-        const maxMoves = 7; // Number of times the "No" button runs before disappearing
+        const maxMoves = 7; // Move exactly 7 times before disappearing
 
         function runNoButton() {
-            let noButton = document.querySelector('.no');
+            let noButton = document.getElementById("noButton");
             let noSound = document.getElementById("noSound");
 
             if (moveCount < maxMoves) {
@@ -109,8 +109,10 @@
                 noButton.style.left = `${x}px`;
                 noButton.style.top = `${y}px`;
                 noSound.play();
-            } else {
-                noButton.style.display = "none"; // Disappear after 7 moves
+            }
+
+            if (moveCount === maxMoves) {
+                setTimeout(() => { noButton.style.display = "none"; }, 500); // Disappear after 7 moves
             }
         }
 
