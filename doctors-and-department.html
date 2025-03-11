@@ -3,778 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JMP Medical Centre</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Kavya, Will You Marry Me?</title>
     <style>
-        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            font-family: 'Roboto', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-            color: #343a40;
-        }
-
-        /* Header */
-        header {
-            background-color: #0056b3; 
-            color: #ffffff;
-            text-align: center;
-            padding: 20px;
-        }
-        /* Increase logo size */
-    header img {
-        max-height: 120px;  /* Increase the size of the logo */
-        width: auto;        /* Maintain the aspect ratio */
-        margin-bottom: 10px;
-        }
-        header h1 {
-            margin: 0;
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5em;
-        }
-        header p {
-            margin: 5px 0;
-            font-size: 1em;
-        }
-
-        /* Navigation Bar */
-        nav {
-            background-color: #007bff;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            gap: 15px;
-            padding: 10px;
-        }
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        nav a:hover {
-            background-color: #ffc107;
-            color: #0056b3;
-        }
-        /* Content Section */
-        .content {
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .content h3 {
-            color: #0056b3;
+            align-items: center;
+            height: 100vh;
             text-align: center;
-            margin-bottom: 20px;
-        }
-
-        /* Cards for Departments */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-        }
-        .card h4 {
-            margin: 0 0 10px;
-            color: #0056b3;
-            cursor: pointer;
-        }
-        .card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: none;
-        }
-        .card ul li {
-            padding: 5px 0;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #0056b3;
-            color: #ffffff;
-            text-align: center;
-            padding: 20px;
             position: relative;
         }
-        footer p {
-            margin: 10px 0;
+        /* Background Video */
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
         }
-        footer .icons {
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+        h1 {
+            color: white;
+            font-size: 5vw;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+        }
+        .proposal-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            max-width: 90%;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .buttons {
+            margin-top: 20px;
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
         }
-        footer .icons a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 1.5em;
-            transition: color 0.3s ease;
+        .btn {
+            font-size: 18px;
+            padding: 12px 24px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            border-radius: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        footer .icons a:hover {
-            color: #ffc107;
+        #yes {
+            background-color: #ff3399;
+            color: white;
         }
-
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-            .banner h2 {
-                font-size: 2em;
-            }
-            .scroll-text {
-                font-size: 1.2em;
-            }
+        #no {
+            background-color: #cccccc;
+            color: black;
+        }
+        #yes:hover {
+            background-color: #ff0066;
+        }
+        #no:hover {
+            background-color: #999999;
+        }
+        /* Full-screen hearts animation */
+        .heart {
+            position: fixed;
+            width: 25px;
+            height: 25px;
+            background: red;
+            clip-path: polygon(50% 0%, 100% 35%, 75% 100%, 50% 80%, 25% 100%, 0% 35%);
+            opacity: 0.8;
+            animation: floatUp 3s linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+        }
+        .celebration-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            display: none;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
-<style>
-    /* Accordion Styles */
-    .accordion {
-        max-width: 800px;
-        margin: 20px auto;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        overflow: hidden;
-        background-color: #f8f9fa;
-    }
-    
-    .accordion-item {
-        border-top: 1px solid #ddd;
-    }
-    
-    .accordion-item:first-child {
-        border-top: none;
-    }
-    
-    .accordion-header {
-        background-color: #0056b3;
-        color: white;
-        padding: 15px;
-        font-size: 1.2em;
-        text-align: left;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        width: 100%;
-        text-align: left;
-    }
-    
-    .accordion-header:hover {
-        background-color: #ffc107;
-        color: #0056b3;
-    }
-    
-    .accordion-content {
-        background-color: #ffffff;
-        color: #343a40;
-        padding: 10px 20px;
-        display: none;
-        font-size: 1em;
-        line-height: 1.5;
-    }
-    
-    .accordion-content p {
-        margin: 0;
-    }
-    
-    .accordion-header.active + .accordion-content {
-        display: block;
-    }
-    </style>
- <style>
-/* General Menu Styles */
-.menu-container {
-    background-color: #007bff; /* Keep the primary blue color */
-    color: white;
-    font-family: Arial, sans-serif;
-    width: 100%;
-    position: relative;
-}
-
-.menu-bar {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 10px 15px;
-    cursor: pointer; /* Makes the entire bar clickable */
-    background-color: #0056b3; /* Slightly darker blue for the bar */
-}
-
-.menu-icon {
-    font-size: 24px;
-    margin-right: 10px;
-}
-
-.menu-label {
-    font-size: 18px;
-}
-
-/* Dropdown Menu Styling */
-#menu {
-    display: none;
-    flex-direction: column;
-    background: linear-gradient(to bottom, #f8f9fa, #e9ecef); /* Light gradient for dropdown */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a modern look */
-    transition: all 0.3s ease-in-out; /* Animation for dropdown appearance */
-    overflow: hidden; /* Ensures smooth dropdown effect */
-    max-height: 0; /* Initially hidden */
-}
-
-#menu.show {
-    display: flex;
-    max-height: 500px; /* Maximum dropdown height (adjustable) */
-}
-
-#menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-#menu ul li {
-    text-align: center;
-    border-bottom: 1px solid #dcdcdc;
-}
-
-#menu ul li a {
-    text-decoration: none;
-    color: #0056b3; /* Blue text for contrast */
-    padding: 10px 15px;
-    display: block;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
-}
-
-#menu ul li a:hover {
-    background-color: #007bff; /* Matches main theme */
-    color: white; /* White text on hover */
-}
-/* Review Button Styles */
-.review-button {
-    background-color: #0056b3; /* Matches website theme */
-    color: #ffffff;
-    font-size: 0.9em;
-    font-weight: bold;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: absolute; /* Enables positioning relative to the card */
-    bottom: 20px; /* Aligns to the bottom of the department card */
-    right: 20px; /* Aligns to the right of the department card */
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-}
-
-/* Arrow and Hover Effect */
-.review-button .arrow {
-    font-size: 1em;
-    transition: transform 0.3s ease;
-}
-
-.review-button:hover {
-    background: linear-gradient(to right, #007bff, #003366);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    transform: translateY(-2px);
-}
-
-.review-button:hover .arrow {
-    transform: translateX(5px); /* Moves the arrow slightly on hover */
-}
-
-/* Mobile View Adjustments */
-@media (max-width: 768px) {
-    .review-button {
-        position: static; /* Places the button in the document flow */
-        margin-top: 20px; /* Adds spacing above the button */
-        display: block; /* Centers the button */
-        text-align: center;
-        width: 80%; /* Adjusts width for smaller screens */
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
- </style>
 <body>
-    <header>
-        <img src="images/jmplogo.png" alt="JMP Logo or Photo">
-        <h1>JMP Medical Centre</h1>
-        <p>Managed by Peace Foundation</p>
-        <p>Piravom, Ernakulam, 686664, Kerala</p>
-    </header>
-    <div class="menu-container">
-    <div id="menu-toggle" class="menu-bar">
-        <span class="menu-icon">&#9776;</span>
-        <span class="menu-label">Menu</span>
+
+    <!-- HD Beach Video Background -->
+    <div class="video-container">
+        <video autoplay loop muted playsinline>
+            <source src="https://mazwai.com/videvo_files/video/free/2014-12/small_watermarked/TimSmyth-Sunrise-6_preview.webm" type="video/webm">
+            <source src="https://mazwai.com/videvo_files/video/free/2014-12/small_watermarked/TimSmyth-Sunrise-6_preview.mp4" type="video/mp4">
+        </video>
     </div>
-    <nav id="menu" class="hidden">
-    <ul>
-        <li><a href="index.html">About Us</a></li>
-        <li><a href="doctors-and-department.html">Departments & Doctors</a></li>
-        <li><a href="surgeries.html">Surgeries</a></li>
-        <li><a href="services.html">Our Services</a></li>
-       <li><a href="services.html#24-Hour Services">24-Hour Services</a></li>
-        <li><a href="insurance.html">Insurance</a></li>
-        <li><a href="careers.html">Careers</a></li>
-    </ul>
-</nav>
-    </ul>
-</nav>
-    </nav>
-</div>
-<!-- Doctors & Departments Section -->
-<div class="content" style="padding: 40px; font-family: 'Roboto', sans-serif; text-align: center;">
-    <h2 style="color: #0056b3; margin-bottom: 20px;">Doctors & Departments</h2>
-    <div id="departments" style="max-width: 800px; margin: 0 auto;">
-        <!-- Departments and Doctors will be dynamically added here -->
-    </div>
-</div>
-<script>
-    // Departments data
-    const departments = [
-        {
-            name: "General Medicine",
-            details: "General Medicine focuses on the prevention, diagnosis, and treatment of adult diseases. Our doctors provide comprehensive care.",
-            doctors: [
-                {
-                    name: "Dr. RAJEEV VENUGOPAL",
-                    qualification: "MD (Med.), DNB (Med.), D.Diab",
-                    role: "CONSULTANT PHYSICIAN & DIABETOLOGIST",
-                    photo: "images/Dr rajeev.jpg"
-                },
-                {
-                    name: "Dr. JILU MARIA JOSEPH",
-                    qualification: "MD, DNB, General Medicine",
-                    role: "",
-                    photo: "images/doc1.jfif"
-                }
-            ]
-        },
-        {
-            name: "Orthopaedic",
-            details: "Orthopaedics specializes in diagnosing and treating musculoskeletal system issues. Our team is highly skilled in surgical and non-surgical treatments.",
-            doctors: [
-                {
-                    name: "Dr. MANOJ KUMAR J.",
-                    qualification: "MBBS, D. ORTHO, MS ORTHO",
-                    role: "ORTHOPAEDIC SURGEON",
-                    photo: "images/Dr manoj.JPG"
-                },
-                {
-                    name: "Dr. JOSEPH C. J.",
-                    qualification: "MBBS, MS ORTHO, Fellowship in Spine Surgery",
-                    role: "RESIDENT ORTHOPAEDIC SURGEON",
-                    photo: "images/Dr joseph.JPG"
-                }
-            ]
-        },
-        {
-            name: "Gynaecology",
-            details: "Our Gynaecology department specializes in women’s health, providing comprehensive care for all obstetrics and gynecology needs.",
-            doctors: [
-                {
-                    name: "Dr. SMITHY SANEL GEORGE",
-                    qualification: "MBBS, DGO, MD(OB&Gyn), PGDFM (Velloore), F.MAS, Dip. MAS",
-                    role: "",
-                    photo: "images/Dr smithi.jpeg"
-                },
-                {
-                    name: "Dr. LAKSHMI RAJ",
-                    qualification: "MBBS, DGO, MRCOG, FMAS",
-                    role: "CONSULTANT OBSTETRICS AND GYNAECOLOGY",
-                    photo: "images/Dr lakshmi.jpeg"
-                }
-            ]
-        },
-        {
-            name: "General Surgeon",
-            details: "Our General Surgery department is equipped to handle a wide range of surgical procedures with precision and care.",
-            doctors: [
-                {
-                    name: "Dr. SURESH",
-                    qualification: "MBBS, MS GENERAL SURGEON",
-                    role: "",
-                    photo: "images/Dr suresh.jpg"
-                }
-            ]
-        },
-        {
-            name: "Anesthesiology",
-            details: "Our Anesthesiology department ensures patient safety and comfort during surgical and medical procedures.",
-            doctors: [
-                {
-                    name: "Dr. Deepak S",
-                    qualification: "MBBS, DA",
-                    role: "",
-                    photo: "doctor8.jpg"
-                }
-            ]
-        },
-        {
-            name: "Pediatrics",
-            details: "Our Pediatrics department provides compassionate care for children, ensuring their health and well-being.",
-            doctors: [
-                {
-                    name: "Dr. SIBY JOSEPH",
-                    qualification: "MBBS, DCH Dept. of PAEDIATRICS",
-                    role: "",
-                    photo: "images/Dr sibi.JPG"
-                }
-            ]
-        },
-        {
-            name: "E.N.T",
-            details: "Our ENT specialists provide expert care for ear, nose, and throat conditions, using advanced techniques.",
-            doctors: [
-                {
-                    name: "Dr. CHANDNI P. ENGOOR",
-                    qualification: "MBBS, MS (ENT), MRCS",
-                    role: "ENDOSCOPIC ENT SURGEON",
-                    photo: "images/Dr chandni.JPG"
-                }
-            ]
-        },
-        {
-            name: "Dermatology & Cosmetology",
-            details: "Our Dermatology & Cosmetology department offers advanced skin care and aesthetic treatments.",
-            doctors: [
-                {
-                    name: "Dr. RHEA MANI",
-                    qualification: "MBBS, MD (CMC VELLORE)",
-                    role: "DERMATOLOGY & COSMETOLOGY",
-                    photo: "images/Dr Rhea.JPG"
-                }
-            ]
-        },
-        {
-            name: "Cardiology",
-            details: "Our Cardiology department provides comprehensive cardiac care and advanced treatments.",
-            doctors: [
-                {
-                    name: "Dr. PHILIPOSE JOHN",
-                    qualification: "MD, DM",
-                    role: "CONSULTANT CARDIOLOGIST",
-                    photo: "doctor12.jpg"
-                }
-            ]
-        },
-        {
-            name: "Ophthalmology",
-            details: "Our Ophthalmology department specializes in vision care, offering advanced treatments for eye conditions.",
-            doctors: [
-                {
-                    name: "Dr. PRIYA NAIR",
-                    qualification: "MS, DO, DNB",
-                    role: "CONSULTANT OPHTHALMOLOGIST",
-                    photo: "doctor13.jpg"
-                }
-            ]
-        },
-        {
-            name: "Gastroenterology",
-            details: "Our Gastroenterology department offers expert care for digestive system disorders.",
-            doctors: [
-                {
-                    name: "Dr. SAJI JOHN VARGHESE",
-                    qualification: "MBBS, MD, DNB",
-                    role: "CONSULTANT GASTROENTEROLOGIST",
-                    photo: "images/Dr saji.JPG"
-                }
-            ]
-        },
-        {
-            name: "Casualty",
-            details: "Our Casualty department is available 24/7 to handle emergencies with care and efficiency.",
-            doctors: [
-                {
-                    name: "Dr. Pratheeb Krishnan",
-                    qualification: "MBBS",
-                    role: "",
-                    photo: "images/Dr Pradeeb.JPG"
-                },
-                {
-                    name: "Dr. Akshay SS",
-                    qualification: "MBBS",
-                    role: "",
-                    photo: "doctor16.jpg"
-                },
-                {
-                    name: "Dr. Ammu S",
-                    qualification: "MBBS",
-                    role: "",
-                    photo: "doctor17.jpg"
-                }
-            ]
-        },
-        {
-            name: "Dental",
-            details: "Our Dental department provides high-quality dental care and advanced treatments.",
-            doctors: [
-                {
-                    name: "Dr. Anu Baby",
-                    qualification: "BDS, MDS",
-                    role: "",
-                    photo: "doctor18.jpg"
-                }
-            ]
-        }
-    ];
+    <div class="overlay"></div>
 
-    function renderDepartments() {
-    const departmentsContainer = document.getElementById('departments');
-    departments.forEach(department => {
-        const departmentCard = document.createElement('div');
-        departmentCard.className = 'department-card';
-        departmentCard.style.cssText = `
-            margin-bottom: 20px; 
-            border: 1px solid #ddd; 
-            border-radius: 10px; 
-            padding: 20px; 
-            background-color: #ffffff; 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            position: relative; /* Ensures positioning context for the button */
-            transition: transform 0.3s ease;
-        `;
-
-        departmentCard.innerHTML = `
-            <h3 style="color: #007bff; cursor: pointer; text-align: center; margin: 0;" onclick="toggleDetails('${department.name}')">
-                ${department.name}
-            </h3>
-            <div id="${department.name}-details" style="display: none; margin-top: 20px;">
-                <p style="text-align: justify;">${department.details}</p>
-                <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px;">
-                    ${department.doctors.map(doctor => `
-                        <div style="width: 200px; text-align: center;">
-                            <img src="${doctor.photo}" alt="${doctor.name}" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-                            <h4 style="color: #0056b3; margin: 10px 0 5px;">${doctor.name}</h4>
-                            <p style="margin: 0; font-size: 0.9em; color: #333;"><strong>${doctor.qualification}</strong></p>
-                            <p style="margin: 0; font-size: 0.85em; color: #666;">${doctor.role}</p>
-                        </div>
-                    `).join('')}
-                </div>
-                <!-- Review Button -->
-                <button class="review-button" onclick="location.href='reviews.html'">
-                    <span class="arrow">➤</span> Write a Review
-                </button>
-            </div>
-        `;
-
-        departmentCard.addEventListener('mouseover', () => departmentCard.style.transform = 'scale(1.02)');
-        departmentCard.addEventListener('mouseout', () => departmentCard.style.transform = 'scale(1)');
-
-        departmentsContainer.appendChild(departmentCard);
-    });
-}
-
-    // Function to toggle department details
-    function toggleDetails(departmentName) {
-        const details = document.getElementById(`${departmentName}-details`);
-        details.style.display = details.style.display === 'block' ? 'none' : 'block';
-    }
-
-    // Render departments on page load
-    renderDepartments();
-</script>
-<body>
-<div class="floating-buttons">
-    <button class="floating-button call-button" onclick="showContactNumber('+91 485 224 1274', '+914852241274')">
-        <span class="icon">📞</span> Book Appointments
-    </button>
-    <button class="floating-button ambulance-button" onclick="showContactNumber('+91 99476 21789', '+919947621789')">
-        <span class="icon">🚑</span> Ambulance Service 
-        <span class="tag">24hrs</span>
-    </button>
-</div>
-</body>
-<style>
-/* Floating Buttons Container */
-.floating-buttons {
-    position: fixed;
-    right: 20px;
-    bottom: 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    z-index: 1000;
-}
-
-/* General Floating Button Styles */
-.floating-button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    background-color: #0056b3;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 15px 20px;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    text-align: center;
-    width: 250px;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Button Hover Effect */
-.floating-button:hover {
-    transform: scale(1.05);
-    background: linear-gradient(to right, #007bff, #003366);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Ambulance Button */
-.ambulance-button {
-    background-color: #ff4c4c;
-    color: white;
-}
-
-.ambulance-button:hover {
-    background: linear-gradient(to right, #ff4c4c, #a80000);
-}
-
-/* Tag (24hrs) on Ambulance Button */
-.ambulance-button .tag {
-    position: absolute;
-    top: 5px; /* Adjust position for visibility */
-    right: 10px; /* Keeps the tag inside the button */
-    background-color: white;
-    color: #ff4c4c;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 3px 8px;
-    border-radius: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    line-height: 1; /* Ensures proper alignment */
-}
-
-/* Icon Design */
-.floating-button .icon {
-    font-size: 18px;
-}
-
-/* Desktop View Media Query */
-@media (min-width: 1024px) {
-    .floating-button:hover::after {
-        content: attr(data-number);
-        position: absolute;
-        bottom: -30px;
-        left: 0;
-        right: 0;
-        color: white;
-        font-size: 14px;
-        background-color: rgba(0, 0, 0, 0.8);
-        padding: 5px;
-        border-radius: 5px;
-        text-align: center;
-    }
-}
-</style>
-<script>
-function showContactNumber(message, tel) {
-    if (window.innerWidth >= 1024) { // Desktop View
-        alert(`Call - ${message}`);
-    } else { // Mobile View
-        window.location.href = `tel:${tel}`;
-    }
-}
-</script>
-<style>
-/* Subtle Scrolling Text */
-.scroll-text {
-    font-size: 1.2em;
-    color: #0056b3;
-    white-space: nowrap;
-    overflow: hidden;
-    position: relative;
-    border: 1px solid #ddd;
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-}
-
-.scroll-content {
-    display: inline-block;
-    animation: smoothScroll 15s linear infinite;
-    padding-right: 100%;
-}
-
-/* Smooth scrolling effect */
-@keyframes smoothScroll {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-.scroll-content:hover {
-    animation-play-state: paused; /* Pause animation on hover */
-}
-</style>                
-    <footer>
-        <p>&copy; 2024 JMP Medical Centre. All rights reserved.</p>
-        <div class="icons">
-            <a href="#">&#128222;</a>
-            <a href="#">&#128231;</a>
-            <a href="#">&#127968;</a>
+    <h1>Hey Kavya ❤️, you are my only dose of happiness. Will you be my 🌎?</h1>
+    <div class="proposal-box">
+        <p>Without you, my heart is like a pharmacy without medicine. Marry me and be my daily dose of love? 🥰</p>
+        <div class="buttons">
+            <button id="yes" class="btn">Yes 💖</button>
+            <button id="no" class="btn">No 😢</button>
         </div>
-    </footer>
+    </div>
+
+  
+
     <script>
-        function toggleSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            section.style.display = section.style.display === 'block' ? 'none' : 'block';
+        let yesButton = document.getElementById("yes");
+        let noButton = document.getElementById("no");
+        let celebrationMessage = document.getElementById("celebration-message");
+        let clickCount = 0;
+        let positions = ["top:10px; left:50%;", "bottom:10px; left:50%;", "left:10px; top:50%;", "right:10px; top:50%;"];
+
+        noButton.addEventListener("click", function() {
+            clickCount++;
+            let newSize = 80 + clickCount * 30;
+            let newHeight = 50 + clickCount * 20;
+
+            yesButton.style.width = newSize + "px";
+            yesButton.style.height = newHeight + "px";
+            yesButton.style.fontSize = (16 + clickCount * 2) + "px";
+
+            let randomPosition = positions[Math.floor(Math.random() * positions.length)];
+            noButton.style.cssText = randomPosition;
+
+            if (clickCount >= 5) {
+                yesButton.style.width = "250px";
+                yesButton.style.height = "250px";
+                yesButton.style.fontSize = "24px";
+                yesButton.innerText = "Yei! Kavya Said Yes😍😍🎉";
+                noButton.style.display = "none";
+            }
+        });
+
+        yesButton.addEventListener("click", function() {
+            launchHearts();
+            celebrationMessage.style.display = "block";
+        });
+
+        function launchHearts() {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    let heart = document.createElement("div");
+                    heart.classList.add("heart");
+                    heart.style.left = Math.random() * window.innerWidth + "px";
+                    heart.style.top = Math.random() * window.innerHeight + "px";
+                    document.body.appendChild(heart);
+                    setTimeout(() => { heart.remove(); }, 3000);
+                }, i * 100);
+            }
         }
     </script>
-    <script>
-        document.querySelectorAll('.accordion-header').forEach(button => {
-            button.addEventListener('click', () => {
-                const activeButton = document.querySelector('.accordion-header.active');
-                if (activeButton && activeButton !== button) {
-                    activeButton.classList.remove('active');
-                    activeButton.nextElementSibling.style.display = 'none';
-
-                }
-
-                button.classList.toggle('active');
-                const content = button.nextElementSibling;
-                content.style.display = content.style.display === 'block' ? 'none' : 'block';
-            });
-        });
-    </script>
-
-<script>
-document.getElementById('menu-toggle').addEventListener('click', function () {
-    const menu = document.getElementById('menu');
-    menu.classList.toggle('show');
-});
-</script>
-
 
 </body>
-</html>             
+</html>
