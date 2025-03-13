@@ -3,140 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kavya, Send Your Cute Photo! ❤️</title>
+    <title>For My Love - Kavya ❤️</title>
     <style>
         body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
             background: black;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
             overflow: hidden;
             color: white;
-            font-family: 'Arial', sans-serif;
             text-align: center;
-            padding: 10px;
         }
-        h1 {
-            font-size: 1.8em;
-            margin-bottom: 15px;
-        }
-        .joke {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-        .button-container {
-            position: relative;
-            width: 100%;
-            height: 150px;
-        }
-        button {
-            font-size: 1.2em;
-            padding: 12px 20px;
-            margin: 10px;
-            border: none;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        .yes {
-            background-color: #28a745;
-            color: white;
-        }
-        .no {
-            background-color: #dc3545;
-            color: white;
+
+        .stars {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: url('https://cdn.pixabay.com/photo/2014/08/26/21/48/starry-sky-428083_1280.jpg') center/cover;
+            z-index: -1;
         }
-        .hearts {
-            position: fixed;
-            top: 0;
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+            text-shadow: 0 0 15px pink, 0 0 30px red;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px pink, 0 0 20px red; }
+            to { text-shadow: 0 0 20px red, 0 0 40px pink; }
+        }
+
+        .heart {
+            width: 120px;
+            height: 120px;
+            background: red;
+            position: relative;
+            transform: rotate(-45deg);
+            margin-top: 20px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            width: 120px;
+            height: 120px;
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart:before {
+            top: -60px;
             left: 0;
+        }
+
+        .heart:after {
+            left: 60px;
+            top: 0;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1) rotate(-45deg); }
+            50% { transform: scale(1.2) rotate(-45deg); }
+        }
+
+        .messages {
+            font-size: 1.5em;
+            margin-top: 20px;
+            max-width: 80%;
+            opacity: 0;
+            animation: fadeInText 5s ease-in-out forwards;
+        }
+
+        @keyframes fadeInText {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .messages span {
+            display: block;
+            margin: 10px 0;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        button {
+            background: pink;
+            border: none;
+            padding: 15px 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 20px;
+            box-shadow: 0 0 15px pink;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: red;
+            box-shadow: 0 0 25px red;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-wrap: wrap;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            overflow: hidden;
-            display: none;
         }
-        .heart {
+
+        .floating-hearts span {
             position: absolute;
-            width: 30px;
-            height: 30px;
-            background-color: pink;
-            clip-path: polygon(50% 0%, 100% 35%, 82% 100%, 50% 80%, 18% 100%, 0% 35%);
-            animation: floatUp 4s linear infinite;
+            bottom: -50px;
+            width: 25px;
+            height: 25px;
+            background: red;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: floatUp 5s infinite linear;
         }
+
         @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(1); opacity: 1; }
-            100% { transform: translateY(-10vh) scale(0.5); opacity: 0; }
+            0% { transform: translateY(0); opacity: 0.8; }
+            100% { transform: translateY(-100vh); opacity: 0; }
         }
     </style>
 </head>
 <body>
-
-    <h1>Kavya, whenever you get time, send me your cutest photo! 🥰</h1>
-    <p class="joke">"Are you a pharmacist? Because you just prescribed me a dose of happiness!" 😍</p>
-
-    <div class="button-container">
-        <button class="yes" onclick="celebrate()">Yes</button>
-        <button class="no" id="noButton" onclick="runNoButton()">No</button>
+    <div class="stars"></div>
+    <div class="container">
+        <h1>For My Love, Kavya ❤️</h1>
+        <div class="heart"></div>
+        <div class="messages">
+            <span style="animation-delay: 1s;">Kavya, my love, my happiness, my forever. 💖</span>
+            <span style="animation-delay: 2s;">You are not just beautiful outside, but you have the most beautiful heart. ❤️</span>
+            <span style="animation-delay: 3s;">Your smile is my sunshine, your voice is my favorite song. 🎶</span>
+            <span style="animation-delay: 4s;">Every moment with you feels like a dream I never want to wake up from. 🌙</span>
+            <span style="animation-delay: 5s;">I never believed in perfection, until I met you. You are my perfect. 💕</span>
+            <span style="animation-delay: 6s;">I don’t need the stars, the moon, or the sun. I only need you. 🌟</span>
+            <span style="animation-delay: 7s;">I want to wake up next to you every morning and love you forever. ❤️</span>
+        </div>
+        <button onclick="showSurprise()">Click for a Surprise</button>
     </div>
 
-    <div class="hearts" id="hearts"></div>
-
-    <audio id="noSound" src="https://www.myinstants.com/media/sounds/mario-jump.mp3"></audio>
-    <audio id="yesSound" src="https://www.myinstants.com/media/sounds/tada-fanfare.mp3"></audio>
+    <div class="floating-hearts hidden"></div>
 
     <script>
-        let moveCount = 0;
-        const maxMoves = 7; // Move exactly 7 times before disappearing
+        function showSurprise() {
+            const heartsContainer = document.querySelector('.floating-hearts');
+            heartsContainer.classList.remove('hidden');
 
-        function runNoButton() {
-            let noButton = document.getElementById("noButton");
-            let noSound = document.getElementById("noSound");
-
-            if (moveCount < maxMoves) {
-                moveCount++;
-                let screenWidth = window.innerWidth - noButton.clientWidth - 20; 
-                let screenHeight = window.innerHeight - noButton.clientHeight - 20; 
-                let x = Math.random() * screenWidth;
-                let y = Math.random() * screenHeight;
-                noButton.style.left = `${x}px`;
-                noButton.style.top = `${y}px`;
-                noSound.play();
-            }
-
-            if (moveCount === maxMoves) {
-                setTimeout(() => { noButton.style.display = "none"; }, 500); // Disappear after 7 moves
-            }
-        }
-
-        function celebrate() {
-            let yesSound = document.getElementById("yesSound");
-            yesSound.play();
-            if (navigator.vibrate) {
-                navigator.vibrate([200, 100, 200]);
-            }
-
-            let heartsContainer = document.getElementById("hearts");
-            heartsContainer.style.display = "block";
-
-            for (let i = 0; i < 30; i++) {
-                let heart = document.createElement("div");
-                heart.classList.add("heart");
-                heart.style.left = Math.random() * 100 + "vw";
-                heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+            for (let i = 0; i < 40; i++) {
+                let heart = document.createElement('span');
+                let size = Math.random() * 25 + 10;
+                heart.style.width = `${size}px`;
+                heart.style.height = `${size}px`;
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.animationDuration = `${Math.random() * 4 + 2}s`;
                 heartsContainer.appendChild(heart);
-
-                setTimeout(() => heart.remove(), 4000);
             }
         }
     </script>
-
 </body>
 </html>
