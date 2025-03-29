@@ -3,38 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Celebration for Sindhu Amma</title>
+    <title>Happy Birthday Sindhu Amma!</title>
     <style>
         body {
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
             text-align: center;
             font-family: 'Arial', sans-serif;
             overflow: hidden;
+            transition: background 1s ease;
         }
-        h1 {
+        #welcome {
             font-size: 3rem;
-            color: white;
             margin-top: 50px;
-            text-shadow: 2px 2px 4px #000;
+            color: white;
+            text-shadow: 2px 2px 4px black;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         #message {
             font-size: 1.5rem;
             color: white;
             display: none;
             margin-top: 20px;
-        }
-        button {
-            padding: 15px 25px;
-            font-size: 1.2rem;
-            border: none;
-            background: #ff4b5c;
-            color: white;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-        button:hover {
-            background: #ff1e3c;
         }
         .balloon {
             position: absolute;
@@ -49,18 +41,97 @@
             0% { transform: translateY(100vh) rotate(0deg); }
             100% { transform: translateY(-20vh) rotate(360deg); }
         }
+        .candle-container {
+            margin-top: 30px;
+        }
+        .candle {
+            width: 10px;
+            height: 50px;
+            background: red;
+            margin: auto;
+            position: relative;
+        }
+        .flame {
+            width: 15px;
+            height: 20px;
+            background: orange;
+            border-radius: 50%;
+            position: absolute;
+            top: -20px;
+            left: -2px;
+            animation: flicker 1s infinite alternate;
+        }
+        @keyframes flicker {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0.5; transform: scale(1.1); }
+        }
+        .hidden {
+            display: none;
+        }
+        .popup {
+            position: fixed;
+            width: 80%;
+            max-width: 400px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            box-shadow: 0px 0px 10px black;
+            display: none;
+        }
+        .popup video {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .btn {
+            padding: 15px;
+            font-size: 1.2rem;
+            background: #ff4b5c;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <h1>Welcome, Sindhu Amma! 🎉</h1>
-    <button onclick="showMessage()">Click for a Surprise</button>
-    <p id="message">You are the most wonderful and loving person! ❤️</p>
+
+    <h1 id="welcome">Happy Birthday, Sindhu Amma! 🎉</h1>
+
+    <div class="candle-container">
+        <div class="candle">
+            <div class="flame" id="flame"></div>
+        </div>
+        <p>Blow or swipe to blow out the candle!</p>
+    </div>
+
+    <button class="btn" onclick="showPopup()">Click for a Surprise</button>
+
+    <div class="popup" id="popup">
+        <p>🎂 Happy Birthday, Sindhu Amma! 🎂</p>
+        <video controls>
+            <source src="birthday_message.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <button class="btn" onclick="closePopup()">Close</button>
+    </div>
 
     <script>
-        function showMessage() {
-            document.getElementById("message").style.display = "block";
-            confettiEffect();
+        function changeBackground() {
+            let hour = new Date().getHours();
+            if (hour < 12) {
+                document.body.style.background = "linear-gradient(to right, #FFDEE9, #B5FFFC)";
+            } else if (hour < 18) {
+                document.body.style.background = "linear-gradient(to right, #FF9A9E, #FAD0C4)";
+            } else {
+                document.body.style.background = "linear-gradient(to right, #1A2980, #26D0CE)";
+            }
         }
+        changeBackground();
 
         function createBalloon() {
             let balloon = document.createElement("div");
@@ -70,14 +141,38 @@
             document.body.appendChild(balloon);
             setTimeout(() => balloon.remove(), 6000);
         }
+        setInterval(createBalloon, 1000);
 
-        function confettiEffect() {
-            for (let i = 0; i < 20; i++) {
-                setTimeout(createBalloon, i * 200);
-            }
+        function showPopup() {
+            document.getElementById("popup").style.display = "block";
+        }
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
         }
 
-        setInterval(createBalloon, 1000);
+        function blowOutCandle() {
+            document.getElementById("flame").classList.add("hidden");
+        }
+
+        window.addEventListener("keydown", blowOutCandle);
+        window.addEventListener("click", blowOutCandle);
+
+        if ('webkitSpeechRecognition' in window) {
+            let recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = "en-US";
+
+            recognition.onresult = function(event) {
+                let speech = event.results[0][0].transcript.toLowerCase();
+                if (speech.includes("blow") || speech.includes("off")) {
+                    blowOutCandle();
+                }
+            };
+
+            recognition.start();
+        }
     </script>
+
 </body>
 </html>
