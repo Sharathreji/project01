@@ -64,11 +64,11 @@
         .balloon {
             position: absolute;
             width: 50px;
-            animation: floatUp 5s linear infinite;
+            animation: floatUp 6s linear infinite;
         }
         @keyframes floatUp {
             0% { transform: translateY(100vh) translateX(0); }
-            100% { transform: translateY(-10vh) translateX(20px); }
+            100% { transform: translateY(-10vh) translateX(calc(-50vw + 100vw * random())); }
         }
         .video-container {
             margin-top: 30px;
@@ -79,16 +79,14 @@
     <h1 class="birthday-text">🎉 Happy Birthday Sindhu Amma! 🎉</h1>
     
     <div class="photo-slider">
-        <img src="images/sindhu1.jpg" alt="Sindhu Amma">
-        <img src="images/sindhu2.jpg" alt="Sindhu Amma">
-        <img src="images/sindhu3.jpg" alt="Sindhu Amma">
-        <img src="images/sindhu5.jpg" alt="Sindhu Amma">
-        <img src="images/sindhu4.jpg" alt="Sindhu Amma">
-        <img src="images/sindhu6.jpg" alt="Sindhu Amma">
+        <img src="img/sindhu1.jpg" alt="Sindhu Amma">
+        <img src="img/sindhu2.jpg" alt="Sindhu Amma">
+        <img src="img/sindhu3.jpg" alt="Sindhu Amma">
+        <img src="img/sindhu4.jpg" alt="Sindhu Amma">
     </div>
 
     <div class="video-container">
-        <iframe width="560" height="315" src="https://youtu.be/i5zt0_q2dmk?si=tWY7apN3HckOi5iV?autoplay=1&mute=1" 
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/i5zt0_q2dmk?autoplay=1&mute=1" 
             title="Happy Birthday Song" frameborder="0" allow="autoplay" allowfullscreen>
         </iframe>
         <p>🔊 Tap to unmute and enjoy the song!</p>
@@ -97,7 +95,7 @@
     <script>
         function createBalloon() {
             const balloon = document.createElement("img");
-            balloon.src = "images/bal.png";
+            balloon.src = "img/balloon.png";
             balloon.classList.add("balloon");
             balloon.style.left = Math.random() * window.innerWidth + "px";
             balloon.style.animationDuration = Math.random() * 4 + 3 + "s"; 
@@ -105,10 +103,10 @@
             document.body.appendChild(balloon);
             setTimeout(() => { balloon.remove(); }, 5000);
         }
-        setInterval(createBalloon, 500);  
+        setInterval(createBalloon, 300);  
 
         function createConfetti() {
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 50; i++) {
                 const confetti = document.createElement("div");
                 confetti.classList.add("confetti");
                 confetti.style.left = Math.random() * 100 + "vw";
