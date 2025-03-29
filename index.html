@@ -3,176 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Sindhu Amma!</title>
+    <title>Happy Birthday Sindhu Amma</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            text-align: center;
+            background: linear-gradient(120deg, #ff9a9e, #fad0c4);
             font-family: 'Arial', sans-serif;
+            text-align: center;
             overflow: hidden;
-            transition: background 1s ease;
         }
-        #welcome {
-            font-size: 3rem;
-            margin-top: 50px;
-            color: white;
-            text-shadow: 2px 2px 4px black;
-            animation: fadeIn 2s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        #message {
-            font-size: 1.5rem;
-            color: white;
-            display: none;
+        .birthday-text {
+            font-size: 50px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 5px #ff4081;
             margin-top: 20px;
+        }
+        .photo-slider {
+            display: flex;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            height: 200px;
+            margin-top: 20px;
+        }
+        .photo-slider img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 20px;
+            animation: scrollPhotos 10s linear infinite;
+        }
+        @keyframes scrollPhotos {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
         }
         .balloon {
             position: absolute;
             width: 50px;
-            height: 70px;
-            background: red;
-            border-radius: 50%;
-            opacity: 0.7;
-            animation: floatUp 6s infinite ease-in-out;
+            animation: floatUp 5s linear infinite;
         }
         @keyframes floatUp {
-            0% { transform: translateY(100vh) rotate(0deg); }
-            100% { transform: translateY(-20vh) rotate(360deg); }
+            0% { transform: translateY(100vh) translateX(0); }
+            100% { transform: translateY(-10vh) translateX(20px); }
         }
-        .candle-container {
-            margin-top: 30px;
-        }
-        .candle {
-            width: 10px;
-            height: 50px;
-            background: red;
-            margin: auto;
-            position: relative;
-        }
-        .flame {
-            width: 15px;
-            height: 20px;
-            background: orange;
-            border-radius: 50%;
-            position: absolute;
-            top: -20px;
-            left: -2px;
-            animation: flicker 1s infinite alternate;
-        }
-        @keyframes flicker {
-            0% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0.5; transform: scale(1.1); }
-        }
-        .hidden {
+        .music {
             display: none;
-        }
-        .popup {
-            position: fixed;
-            width: 80%;
-            max-width: 400px;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            box-shadow: 0px 0px 10px black;
-            display: none;
-        }
-        .popup video {
-            width: 100%;
-            border-radius: 10px;
-        }
-        .btn {
-            padding: 15px;
-            font-size: 1.2rem;
-            background: #ff4b5c;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-
-    <h1 id="welcome">Happy Birthday, Sindhu Amma! 🎉</h1>
-
-    <div class="candle-container">
-        <div class="candle">
-            <div class="flame" id="flame"></div>
-        </div>
-        <p>Blow or swipe to blow out the candle!</p>
+    <h1 class="birthday-text">🎉 Happy Birthday Sindhu Amma! 🎉</h1>
+    
+    <div class="photo-slider">
+        <img src="img/sindhu1.jpg" alt="Sindhu Amma">
+        <img src="img/sindhu2.jpg" alt="Sindhu Amma">
+        <img src="img/sindhu3.jpg" alt="Sindhu Amma">
+        <img src="img/sindhu4.jpg" alt="Sindhu Amma">
     </div>
 
-    <button class="btn" onclick="showPopup()">Click for a Surprise</button>
-
-    <div class="popup" id="popup">
-        <p>🎂 Happy Birthday, Sindhu Amma! 🎂</p>
-        <video controls>
-            <source src="birthday_message.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <button class="btn" onclick="closePopup()">Close</button>
-    </div>
+    <audio class="music" autoplay loop>
+        <source src="music/happy-birthday.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
     <script>
-        function changeBackground() {
-            let hour = new Date().getHours();
-            if (hour < 12) {
-                document.body.style.background = "linear-gradient(to right, #FFDEE9, #B5FFFC)";
-            } else if (hour < 18) {
-                document.body.style.background = "linear-gradient(to right, #FF9A9E, #FAD0C4)";
-            } else {
-                document.body.style.background = "linear-gradient(to right, #1A2980, #26D0CE)";
-            }
-        }
-        changeBackground();
-
         function createBalloon() {
-            let balloon = document.createElement("div");
-            balloon.className = "balloon";
+            const balloon = document.createElement("img");
+            balloon.src = "img/balloon.png";
+            balloon.classList.add("balloon");
             balloon.style.left = Math.random() * window.innerWidth + "px";
-            balloon.style.background = "hsl(" + Math.random() * 360 + ", 100%, 70%)";
+            balloon.style.animationDuration = Math.random() * 3 + 5 + "s";
             document.body.appendChild(balloon);
-            setTimeout(() => balloon.remove(), 6000);
+            
+            setTimeout(() => { balloon.remove(); }, 5000);
         }
         setInterval(createBalloon, 1000);
-
-        function showPopup() {
-            document.getElementById("popup").style.display = "block";
-        }
-        function closePopup() {
-            document.getElementById("popup").style.display = "none";
-        }
-
-        function blowOutCandle() {
-            document.getElementById("flame").classList.add("hidden");
-        }
-
-        window.addEventListener("keydown", blowOutCandle);
-        window.addEventListener("click", blowOutCandle);
-
-        if ('webkitSpeechRecognition' in window) {
-            let recognition = new webkitSpeechRecognition();
-            recognition.continuous = false;
-            recognition.interimResults = false;
-            recognition.lang = "en-US";
-
-            recognition.onresult = function(event) {
-                let speech = event.results[0][0].transcript.toLowerCase();
-                if (speech.includes("blow") || speech.includes("off")) {
-                    blowOutCandle();
-                }
-            };
-
-            recognition.start();
-        }
     </script>
-
 </body>
 </html>
