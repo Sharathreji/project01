@@ -20,8 +20,13 @@
             font-size: 50px;
             font-weight: bold;
             color: #fff;
-            text-shadow: 2px 2px 5px #ff4081;
+            text-shadow: 2px 2px 10px #ff4081;
             margin-top: 20px;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 2px 2px 10px #ff4081; }
+            to { text-shadow: 2px 2px 20px #ff1493; }
         }
         .photo-slider {
             display: flex;
@@ -42,6 +47,20 @@
             from { transform: translateX(100%); }
             to { transform: translateX(-100%); }
         }
+        .confetti {
+            position: fixed;
+            top: -10px;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            opacity: 0.7;
+            animation: fall 4s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) translateX(0); opacity: 1; }
+            100% { transform: translateY(100vh) translateX(calc(-50vw + 100vw * random())); opacity: 0; }
+        }
         .balloon {
             position: absolute;
             width: 50px;
@@ -60,12 +79,10 @@
     <h1 class="birthday-text">🎉 Happy Birthday Sindhu Amma! 🎉</h1>
     
     <div class="photo-slider">
-        <img src="images/sindhu1.jpg" alt="Sindhu Amma">
-        <img src="images/sindhu2.jpg" alt="Sindhu Amma">
-        <img src="images/sindhu3.jpg" alt="Sindhu Amma">
-        <img src="images/sindhu5.jpg" alt="Sindhu Amma">
-        <img src="images/sindhu4.jpg" alt="Sindhu Amma">
-        <img src="images/sindhu6.jpg" alt="Sindhu Amma">
+        <img src="img/sindhu1.jpg" alt="Sindhu Amma">
+        <img src="img/sindhu2.jpg" alt="Sindhu Amma">
+        <img src="img/sindhu3.jpg" alt="Sindhu Amma">
+        <img src="img/sindhu4.jpg" alt="Sindhu Amma">
     </div>
 
     <div class="video-container">
@@ -81,12 +98,26 @@
             balloon.src = "img/balloon.png";
             balloon.classList.add("balloon");
             balloon.style.left = Math.random() * window.innerWidth + "px";
-            balloon.style.animationDuration = Math.random() * 3 + 5 + "s";
+            balloon.style.animationDuration = Math.random() * 4 + 3 + "s"; 
+            balloon.style.width = Math.random() * 30 + 50 + "px"; 
             document.body.appendChild(balloon);
-            
             setTimeout(() => { balloon.remove(); }, 5000);
         }
-        setInterval(createBalloon, 1000);
+        setInterval(createBalloon, 500);  
+
+        function createConfetti() {
+            for (let i = 0; i < 30; i++) {
+                const confetti = document.createElement("div");
+                confetti.classList.add("confetti");
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.background = `hsl(${Math.random() * 360}, 100%, 75%)`;  
+                confetti.style.width = Math.random() * 10 + 5 + "px";
+                confetti.style.height = confetti.style.width;
+                document.body.appendChild(confetti);
+                setTimeout(() => { confetti.remove(); }, 4000);
+            }
+        }
+        setInterval(createConfetti, 1000);
     </script>
 </body>
 </html>
