@@ -17,7 +17,7 @@
             background: url('images/background.jpg') center/cover no-repeat fixed;
             position: relative;
         }
-        /* Gradient overlay effect */
+        /* Gradient overlay */
         body::before {
             content: "";
             position: absolute;
@@ -35,19 +35,19 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+        /* Animated heading */
         .birthday-text {
-            font-size: 50px;
+            font-size: 60px;
             font-weight: bold;
             color: #fff;
-            text-shadow: 2px 2px 20px #ff4081;
+            text-shadow: 4px 4px 20px #ff4081, 0 0 30px #ff1493;
             margin-top: 20px;
-            animation: fadeIn 2s ease-in-out;
             position: relative;
-            z-index: 1;
+            animation: bounceText 2s infinite alternate;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes bounceText {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
         }
         .photo-slider {
             display: flex;
@@ -74,15 +74,17 @@
             position: relative;
             z-index: 1;
         }
+        /* Balloons */
         .balloon {
             position: absolute;
             width: 50px;
-            animation: floatUp 6s linear infinite;
+            animation: floatUp 5s linear infinite;
         }
         @keyframes floatUp {
             0% { transform: translateY(100vh) translateX(0); opacity: 1; }
             100% { transform: translateY(-10vh) translateX(calc(-50vw + 100vw * random())); opacity: 0; }
         }
+        /* Confetti */
         .confetti {
             position: fixed;
             top: -10px;
@@ -95,6 +97,37 @@
         @keyframes fall {
             0% { transform: translateY(-10vh) translateX(0); opacity: 1; }
             100% { transform: translateY(100vh) translateX(calc(-50vw + 100vw * random())); opacity: 0; }
+        }
+        /* Popup birthday card */
+        .popup-card {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: popup 0.5s ease-in-out;
+            z-index: 100;
+        }
+        @keyframes popup {
+            from { transform: translate(-50%, -60%); opacity: 0; }
+            to { transform: translate(-50%, -50%); opacity: 1; }
+        }
+        .popup-card img {
+            width: 100px;
+        }
+        .popup-card button {
+            margin-top: 10px;
+            padding: 10px;
+            background: #ff4081;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -116,6 +149,14 @@
             title="Happy Birthday Song" frameborder="0" allow="autoplay" allowfullscreen>
         </iframe>
         <p>🔊 Tap to unmute and enjoy the song!</p>
+    </div>
+
+    <!-- Popup Birthday Card -->
+    <div class="popup-card" id="birthdayPopup">
+        <img src="images/cake.png" alt="Cake">
+        <h2>Happy Birthday Sindhu Amma! 🎂</h2>
+        <p>Wishing you joy, love, and laughter today and always! 🎉</p>
+        <button onclick="closePopup()">Close</button>
     </div>
 
     <script>
@@ -144,6 +185,15 @@
             }
         }
         setInterval(createConfetti, 1000);
+
+        function showPopup() {
+            document.getElementById("birthdayPopup").style.display = "block";
+        }
+        setTimeout(showPopup, 5000);
+
+        function closePopup() {
+            document.getElementById("birthdayPopup").style.display = "none";
+        }
     </script>
 
 </body>
