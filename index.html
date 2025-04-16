@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('background.jpg') no-repeat center center/cover;
+      background: url('images/background.jpg') no-repeat center center/cover;
       overflow-x: hidden;
     }
     .title {
@@ -99,7 +99,7 @@
     // Generate balloons with your custom images
     for (let i = 0; i < 30; i++) {
       let balloon = document.createElement('img');
-      balloon.src = i % 2 === 0 ? 'balloon1.png' : 'balloon2.png'; // Custom balloons
+      balloon.src = i % 2 === 0 ? 'images/bal3.png' : 'images/bal2.png'; // Custom balloons
       balloon.classList.add('balloon');
       balloon.style.left = Math.random() * 100 + 'vw';
       balloon.style.animationDuration = (6 + Math.random() * 5) + 's';
