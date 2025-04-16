@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +7,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('images/background.jpg') no-repeat center center/cover;
+      background: url('background.jpg') no-repeat center center/cover;
       overflow-x: hidden;
     }
     .title {
@@ -18,47 +17,57 @@
       margin-top: 50px;
       animation: pop 1s ease-in-out;
       cursor: pointer;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 182, 193, 0.8);
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      transition: transform 0.3s ease;
+    }
+    .title:hover {
+      transform: scale(1.05);
     }
     @keyframes pop {
       0% { transform: scale(0.5); opacity: 0; }
       100% { transform: scale(1); opacity: 1; }
     }
-    .funny-box {
-      max-width: 600px;
+    .love-box {
+      max-width: 800px;
       margin: 30px auto;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      overflow: hidden;
-      position: relative;
+      padding: 25px;
+      background: rgba(255, 192, 203, 0.85);
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255,105,180,0.4);
+      text-align: center;
+      color: #4b0033;
+      font-size: 1.2rem;
+      line-height: 1.7;
     }
-    .funny-paragraph {
-      white-space: nowrap;
-      position: absolute;
-      animation: scrollText 20s linear infinite;
+    .collage-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #fff;
+      margin-top: 40px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
     }
-    @keyframes scrollText {
-      0% { left: 100%; }
-      100% { left: -100%; }
-    }
-    .gallery {
-      display: flex;
-      overflow-x: auto;
-      padding: 20px;
+    .collage {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 15px;
-      scroll-behavior: smooth;
-    }
-    .gallery img {
-      width: 200px;
-      height: 250px;
-      object-fit: cover;
+      max-width: 900px;
+      margin: 20px auto 40px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.85);
       border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease-in-out;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
     }
-    .gallery img:hover {
-      transform: scale(1.1);
+    .collage img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
     }
     .balloon {
       position: fixed;
@@ -71,35 +80,49 @@
       0% { transform: translateY(0); }
       100% { transform: translateY(120vh); }
     }
+    .glitter {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://i.postimg.cc/ZKD2qSxB/glitter.gif');
+      background-size: cover;
+      opacity: 0.25;
+      z-index: 999;
+      mix-blend-mode: screen;
+    }
+    @media (max-width: 600px) {
+      .title {
+        font-size: 2rem;
+        padding: 15px;
+      }
+      .love-box {
+        font-size: 1rem;
+        padding: 15px;
+      }
+      .collage-title {
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1 class="title" onclick="triggerSurprise()">Happy Birthday Kavya</h1>
-
-  <div class="funny-box">
-    <div class="funny-paragraph" style="top: 0; animation-delay: 0s">
-      If sweetness had a face, it’d sue you for stealing the spotlight! You’re so adorable, even puppies take notes.
-    </div>
-    <div class="funny-paragraph" style="top: 50px; animation-delay: 7s">
-      You shine brighter than my mobile screen in the dark! Happy Birthday, you hilarious miracle!
-    </div>
-  </div>
-
-  <div class="gallery" id="gallery">
-    <!-- Replace these with your image file names -->
+  <div class="glitter"></div>  <h1 class="title" onclick="triggerSurprise()">Happy Birthday Kavya</h1>  <div class="love-box">
+    Happy Birthday to the most stunning pharmacist who’s ever stolen my heart — Kavya Jagadeesh! You’re the only drug I’m hopelessly addicted to, and trust me, no antidote could ever fix this love overdose. Your presence is more effective than any multivitamin, and your hugs are stronger than any antibiotic. With you, life feels like a never-ending prescription of laughter, cuddles, and mischief. Today, I celebrate the woman who fills my life with love, my shelves with memories, and my soul with peace. So here’s to you, my personal pharmacist of happiness — may your day be as lovely, wild, and unforgettable as you are!
+  </div>  <h2 class="collage-title">Happy Birthday With Love</h2>
+  <div class="collage">
     <img src="img1.jpg" alt="Kavya 1">
     <img src="img2.jpg" alt="Kavya 2">
     <img src="img3.jpg" alt="Kavya 3">
     <img src="img4.jpg" alt="Kavya 4">
     <img src="img5.jpg" alt="Kavya 5">
     <img src="img6.jpg" alt="Kavya 6">
-  </div>
-
-  <script>
-    // Generate balloons with your custom images
+  </div>  <script>
     for (let i = 0; i < 30; i++) {
       let balloon = document.createElement('img');
-      balloon.src = i % 2 === 0 ? 'images/bal3.png' : 'images/bal2.png'; // Custom balloons
+      balloon.src = i % 2 === 0 ? 'balloon1.png' : 'balloon2.png';
       balloon.classList.add('balloon');
       balloon.style.left = Math.random() * 100 + 'vw';
       balloon.style.animationDuration = (6 + Math.random() * 5) + 's';
@@ -109,6 +132,5 @@
     function triggerSurprise() {
       alert("SURPRISE! You just clicked on your own name! You're amazing and beautiful and hilarious – never forget that!");
     }
-  </script>
-</body>
+  </script></body>
 </html>
