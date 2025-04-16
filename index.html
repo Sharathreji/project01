@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -73,14 +74,18 @@
   </style>
 </head>
 <body>
-  <h1 class="title" onclick="triggerSurprise()">Happy Birthday Kavya</h1>  <div class="funny-box">
+  <h1 class="title" onclick="triggerSurprise()">Happy Birthday Kavya</h1>
+
+  <div class="funny-box">
     <div class="funny-paragraph" style="top: 0; animation-delay: 0s">
       If sweetness had a face, it’d sue you for stealing the spotlight! You’re so adorable, even puppies take notes.
     </div>
     <div class="funny-paragraph" style="top: 50px; animation-delay: 7s">
       You shine brighter than my mobile screen in the dark! Happy Birthday, you hilarious miracle!
     </div>
-  </div>  <div class="gallery" id="gallery">
+  </div>
+
+  <div class="gallery" id="gallery">
     <!-- Replace these with your image file names -->
     <img src="img1.jpg" alt="Kavya 1">
     <img src="img2.jpg" alt="Kavya 2">
@@ -88,11 +93,13 @@
     <img src="img4.jpg" alt="Kavya 4">
     <img src="img5.jpg" alt="Kavya 5">
     <img src="img6.jpg" alt="Kavya 6">
-  </div>  <script>
+  </div>
+
+  <script>
     // Generate balloons with your custom images
     for (let i = 0; i < 30; i++) {
       let balloon = document.createElement('img');
-      balloon.src = i % 2 === 0 ? 'images/bal.png' : 'balloon2.png'; // Custom balloons
+      balloon.src = i % 2 === 0 ? 'balloon1.png' : 'balloon2.png'; // Custom balloons
       balloon.classList.add('balloon');
       balloon.style.left = Math.random() * 100 + 'vw';
       balloon.style.animationDuration = (6 + Math.random() * 5) + 's';
@@ -102,5 +109,6 @@
     function triggerSurprise() {
       alert("SURPRISE! You just clicked on your own name! You're amazing and beautiful and hilarious – never forget that!");
     }
-  </script></body>
+  </script>
+</body>
 </html>
