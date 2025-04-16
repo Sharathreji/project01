@@ -56,7 +56,7 @@
     }
 
     .heart {
-      font-size: 100px;
+      font-size: 140px;
       color: red;
       text-align: center;
       cursor: pointer;
@@ -117,7 +117,7 @@
     .balloon {
       position: fixed;
       top: -100px;
-      width: 80px;
+      width: 120px;
       animation: floatBalloon 10s infinite ease-in;
       z-index: 1000;
     }
@@ -154,7 +154,7 @@
         font-size: 2rem;
       }
       .heart {
-        font-size: 70px;
+        font-size: 100px;
       }
     }
   </style>
@@ -169,7 +169,7 @@
   </div>
 
   <div class="heart" onclick="showPopup()">❤️</div>
-  <img src="images/popup.jpg" alt="Popup Surprise" class="popup-img" id="popupImg" onclick="hidePopup()" />
+  <img src="images/popup.jpg" alt="Popup Surprise" class="popup-img" id="popupImg" />
 
   <h2 class="collage-title">Happy Birthday With Love</h2>
 
@@ -199,11 +199,11 @@
     }
 
     function showPopup() {
-      document.getElementById("popupImg").style.display = "block";
-    }
-
-    function hidePopup() {
-      document.getElementById("popupImg").style.display = "none";
+      const popup = document.getElementById("popupImg");
+      popup.style.display = "block";
+      setTimeout(() => {
+        popup.style.display = "none";
+      }, 7000);
     }
   </script>
 </body>
