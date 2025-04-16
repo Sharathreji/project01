@@ -7,145 +7,100 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('images/background.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
+      background: url('background.jpg') no-repeat center center/cover;
       overflow-x: hidden;
-    }.overlay {
-  background-color: rgba(0, 0, 0, 0.6);
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-}
-
-.content {
-  position: relative;
-  z-index: 1;
-  padding: 50px 20px;
-  text-align: center;
-  transition: transform 1s ease-in-out;
-}
-
-h1 {
-  font-size: 3em;
-  margin-bottom: 20px;
-}
-
-.messages, .followup-message, .slide-image {
-  font-size: 1.5em;
-  margin: 30px auto;
-  max-width: 800px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 20px;
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-}
-
-.followup-message, .slide-image {
-  display: none;
-}
-
-.gallery {
-  margin-top: 50px;
-  display: flex;
-  overflow-x: scroll;
-  gap: 20px;
-  padding: 20px;
-}
-
-.gallery img {
-  height: 300px;
-  border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  flex-shrink: 0;
-}
-
-.balloon {
-  position: fixed;
-  width: 50px;
-  animation: float 6s linear infinite;
-  z-index: 0;
-}
-
-.slide-image img {
-  width: 100%;
-  border-radius: 20px;
-}
-
-@keyframes float {
-  0% {
-    bottom: -100px;
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  100% {
-    bottom: 100vh;
-    opacity: 0;
-  }
-}
-
+    }
+    .title {
+      text-align: center;
+      font-size: 3rem;
+      color: #fff;
+      margin-top: 50px;
+      animation: pop 1s ease-in-out;
+      cursor: pointer;
+    }
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .funny-box {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      overflow: hidden;
+      position: relative;
+    }
+    .funny-paragraph {
+      white-space: nowrap;
+      position: absolute;
+      animation: scrollText 20s linear infinite;
+    }
+    @keyframes scrollText {
+      0% { left: 100%; }
+      100% { left: -100%; }
+    }
+    .gallery {
+      display: flex;
+      overflow-x: auto;
+      padding: 20px;
+      gap: 15px;
+      scroll-behavior: smooth;
+    }
+    .gallery img {
+      width: 200px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease-in-out;
+    }
+    .gallery img:hover {
+      transform: scale(1.1);
+    }
+    .balloon {
+      position: fixed;
+      top: -100px;
+      width: 50px;
+      animation: floatBalloon 10s infinite ease-in;
+      z-index: 1000;
+    }
+    @keyframes floatBalloon {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(120vh); }
+    }
   </style>
 </head>
 <body>
-  <div class="overlay"></div>
-  <div class="content">
-    <h1>Happy Birthday Kavya!</h1>
-    <div class="messages" id="messageBox">
-      <p>Need a hug? I'm here.</p>
-      <p>Want to laugh? I'm here.</p>
-      <p>Need to talk? I'm here.</p>
-      <p>Feeling insecure? I'm here.</p>
-      <p>Can't sleep? I'm here.</p>
-      <p>Need anything? I'm always here for you.</p>
-      <p>I love you so, so much!</p>
+  <h1 class="title" onclick="triggerSurprise()">Happy Birthday Kavya</h1>  <div class="funny-box">
+    <div class="funny-paragraph" style="top: 0; animation-delay: 0s">
+      If sweetness had a face, it’d sue you for stealing the spotlight! You’re so adorable, even puppies take notes.
     </div>
-    <div class="followup-message" id="followUp">
-      <p><strong>You better!</strong></p>
-      <p>Take care of yourself and be good to yourself because I love you and you're an absolute blessing on earth.</p>
+    <div class="funny-paragraph" style="top: 50px; animation-delay: 7s">
+      You shine brighter than my mobile screen in the dark! Happy Birthday, you hilarious miracle!
     </div>
-    <div class="slide-image" id="slideImage">
-      <img src="images/slide.jpg" alt="Slide Image" />
-    </div>
-    <div class="gallery">
-      <img src="images/kavya1.jpg" alt="Kavya 1" />
-      <img src="images/kavya2.jpg" alt="Kavya 2" />
-      <img src="images/kavya3.jpg" alt="Kavya 3" />
-      <img src="images/kavya4.jpg" alt="Kavya 4" />
-      <img src="images/kavya5.jpg" alt="Kavya 5" />
-      <img src="images/kavya6.jpg" alt="Kavya 6" />
-    </div>
+  </div>  <div class="gallery" id="gallery">
+    <!-- Replace these with your image file names -->
+    <img src="img1.jpg" alt="Kavya 1">
+    <img src="img2.jpg" alt="Kavya 2">
+    <img src="img3.jpg" alt="Kavya 3">
+    <img src="img4.jpg" alt="Kavya 4">
+    <img src="img5.jpg" alt="Kavya 5">
+    <img src="img6.jpg" alt="Kavya 6">
   </div>  <script>
-    // Balloon rain effect
-    function createBalloon() {
-      const balloon = document.createElement('img');
-      balloon.src = 'images/bal.png';
+    // Generate balloons with your custom images
+    for (let i = 0; i < 30; i++) {
+      let balloon = document.createElement('img');
+      balloon.src = i % 2 === 0 ? 'balloon1.png' : 'balloon2.png'; // Custom balloons
       balloon.classList.add('balloon');
-      balloon.style.left = Math.random() * window.innerWidth + 'px';
-      balloon.style.animationDuration = 4 + Math.random() * 4 + 's';
+      balloon.style.left = Math.random() * 100 + 'vw';
+      balloon.style.animationDuration = (6 + Math.random() * 5) + 's';
       document.body.appendChild(balloon);
-
-      setTimeout(() => balloon.remove(), 8000);
     }
 
-    setInterval(createBalloon, 300);
-
-    // Timed transitions for message box
-    setTimeout(() => {
-      const messageBox = document.getElementById('messageBox');
-      const followUp = document.getElementById('followUp');
-      messageBox.style.transform = 'translateX(-120%)';
-      messageBox.style.opacity = '0';
-      followUp.style.display = 'block';
-    }, 7000);
-
-    setTimeout(() => {
-      const followUp = document.getElementById('followUp');
-      const slideImage = document.getElementById('slideImage');
-      followUp.style.transform = 'translateX(-120%)';
-      followUp.style.opacity = '0';
-      slideImage.style.display = 'block';
-    }, 14000);
+    function triggerSurprise() {
+      alert("SURPRISE! You just clicked on your own name! You're amazing and beautiful and hilarious – never forget that!");
+    }
   </script></body>
 </html>
