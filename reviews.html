@@ -1,151 +1,168 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Birthday Kavya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('images/background.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
+      background: url('images/back2.png') no-repeat center center/cover;
       overflow-x: hidden;
-    }.overlay {
-  background-color: rgba(0, 0, 0, 0.6);
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-}
+    }
 
-.content {
-  position: relative;
-  z-index: 1;
-  padding: 50px 20px;
-  text-align: center;
-  transition: transform 1s ease-in-out;
-}
+    .title {
+      text-align: center;
+      font-size: 3.5rem;
+      font-family: 'Dancing Script', cursive;
+      color: #fff;
+      margin-top: 50px;
+      background: linear-gradient(to right, #2c3e50, #4ca1af);
+      padding: 25px 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      transition: transform 0.3s ease;
+      animation: pop 1s ease-in-out;
+      text-shadow: 2px 2px 10px rgba(255,255,255,0.3);
+      cursor: pointer;
+    }
 
-h1 {
-  font-size: 3em;
-  margin-bottom: 20px;
-}
+    .title:hover {
+      transform: scale(1.05);
+    }
 
-.messages, .followup-message, .slide-image {
-  font-size: 1.5em;
-  margin: 30px auto;
-  max-width: 800px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 20px;
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-}
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
 
-.followup-message, .slide-image {
-  display: none;
-}
+    .love-box {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      text-align: center;
+      color: #4b0033;
+      font-size: 1.4rem;
+      line-height: 1.9;
+      font-family: 'Dancing Script', cursive;
+    }
 
-.gallery {
-  margin-top: 50px;
-  display: flex;
-  overflow-x: scroll;
-  gap: 20px;
-  padding: 20px;
-}
+    .collage-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #1a1a1a;
+      margin-top: 40px;
+      text-shadow: 2px 2px 8px rgba(255,255,255,0.2);
+      background: linear-gradient(to right, #000428, #004e92);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+    }
 
-.gallery img {
-  height: 300px;
-  border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  flex-shrink: 0;
-}
+    .collage {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      max-width: 900px;
+      margin: 20px auto 40px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
 
-.balloon {
-  position: fixed;
-  width: 50px;
-  animation: float 6s linear infinite;
-  z-index: 0;
-}
+    .collage img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+    }
 
-.slide-image img {
-  width: 100%;
-  border-radius: 20px;
-}
+    .balloon {
+      position: fixed;
+      top: -100px;
+      width: 50px;
+      animation: floatBalloon 10s infinite ease-in;
+      z-index: 1000;
+    }
 
-@keyframes float {
-  0% {
-    bottom: -100px;
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  100% {
-    bottom: 100vh;
-    opacity: 0;
-  }
-}
+    @keyframes floatBalloon {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(120vh); }
+    }
 
+    .glitter {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://i.postimg.cc/ZKD2qSxB/glitter.gif');
+      background-size: cover;
+      opacity: 0.25;
+      z-index: 999;
+      mix-blend-mode: screen;
+    }
+
+    @media (max-width: 600px) {
+      .title {
+        font-size: 2.5rem;
+        padding: 20px;
+      }
+      .love-box {
+        font-size: 1.2rem;
+        padding: 20px;
+      }
+      .collage-title {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="overlay"></div>
-  <div class="content">
-    <h1>Happy Birthday Kavya!</h1>
-    <div class="messages" id="messageBox">
-      <p>Need a hug? I'm here.</p>
-      <p>Want to laugh? I'm here.</p>
-      <p>Need to talk? I'm here.</p>
-      <p>Feeling insecure? I'm here.</p>
-      <p>Can't sleep? I'm here.</p>
-      <p>Need anything? I'm always here for you.</p>
-      <p>I love you so, so much!</p>
-    </div>
-    <div class="followup-message" id="followUp">
-      <p><strong>You better!</strong></p>
-      <p>Take care of yourself and be good to yourself because I love you and you're an absolute blessing on earth.</p>
-    </div>
-    <div class="slide-image" id="slideImage">
-      <img src="images/slide.jpg" alt="Slide Image" />
-    </div>
-    <div class="gallery">
-      <img src="images/kavya1.jpg" alt="Kavya 1" />
-      <img src="images/kavya2.jpg" alt="Kavya 2" />
-      <img src="images/kavya3.jpg" alt="Kavya 3" />
-      <img src="images/kavya4.jpg" alt="Kavya 4" />
-      <img src="images/kavya5.jpg" alt="Kavya 5" />
-      <img src="images/kavya6.jpg" alt="Kavya 6" />
-    </div>
-  </div>  <script>
-    // Balloon rain effect
-    function createBalloon() {
-      const balloon = document.createElement('img');
-      balloon.src = 'images/bal.png';
-      balloon.classList.add('balloon');
-      balloon.style.left = Math.random() * window.innerWidth + 'px';
-      balloon.style.animationDuration = 4 + Math.random() * 4 + 's';
-      document.body.appendChild(balloon);
+  <div class="glitter"></div>
 
-      setTimeout(() => balloon.remove(), 8000);
+  <h1 class="title" onclick="triggerSurprise()">Happy Birthday Kavya</h1>
+
+  <div class="love-box">
+    Happy Birthday to the most stunning pharmacist who’s ever stolen my heart — Kavya Jagadeesh! You’re the only drug I’m hopelessly addicted to, and trust me, no antidote could ever fix this love overdose. Your presence is more effective than any multivitamin, and your hugs are stronger than any antibiotic. With you, life feels like a never-ending prescription of laughter, cuddles, and mischief. Today, I celebrate the woman who fills my life with love, my shelves with memories, and my soul with peace. So here’s to you, my personal pharmacist of happiness — may your day be as lovely, wild, and unforgettable as you are! I LOVE YOU 💖 
+  </div>
+
+  <h2 class="collage-title">Happy Birthday With Love</h2>
+
+  <div class="collage">
+    <img src="images/k1.jpg" alt="Kavya 1">
+    <img src="images/k2.jpg" alt="Kavya 2">
+    <img src="images/k4.jpg" alt="Kavya 3">
+    <img src="images/k5.jpg" alt="Kavya 4">
+    <img src="images/k3.jpg" alt="Kavya 5">
+    <img src="images/k7.jpg" alt="Kavya 6">
+    <img src="images/k8.jpg" alt="Kavya 7">
+    <img src="images/k9.jpg" alt="Kavya 8">
+  </div>
+
+  <script>
+    for (let i = 0; i < 30; i++) {
+      let balloon = document.createElement('img');
+      balloon.src = i % 2 === 0 ? 'images/bal3.png' : 'images/bal2.png';
+      balloon.classList.add('balloon');
+      balloon.style.left = Math.random() * 100 + 'vw';
+      balloon.style.animationDuration = (6 + Math.random() * 5) + 's';
+      document.body.appendChild(balloon);
     }
 
-    setInterval(createBalloon, 300);
-
-    // Timed transitions for message box
-    setTimeout(() => {
-      const messageBox = document.getElementById('messageBox');
-      const followUp = document.getElementById('followUp');
-      messageBox.style.transform = 'translateX(-120%)';
-      messageBox.style.opacity = '0';
-      followUp.style.display = 'block';
-    }, 7000);
-
-    setTimeout(() => {
-      const followUp = document.getElementById('followUp');
-      const slideImage = document.getElementById('slideImage');
-      followUp.style.transform = 'translateX(-120%)';
-      followUp.style.opacity = '0';
-      slideImage.style.display = 'block';
-    }, 14000);
-  </script></body>
+    function triggerSurprise() {
+      alert("SURPRISE! I LOVE YOU BABY NO MATTER WHAT ILL ALWAYS BE THERE FOR YOU – never forget that!");
+    }
+  </script>
+</body>
 </html>
