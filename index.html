@@ -97,7 +97,6 @@ header{font-size:2.2rem;}
 
 <body>
 
-<!-- FLOATING EMOJIS -->
 <span class="emoji" style="left:5%">❤️</span>
 <span class="emoji" style="left:15%">💖</span>
 <span class="emoji" style="left:30%">💕</span>
@@ -175,8 +174,7 @@ const canvas=document.getElementById("fireCanvas");
 const img=document.getElementById("centerImage");
 const ctx=canvas.getContext("2d");
 
-let particles=[];
-let running=false;
+let particles=[],running=false;
 
 btn.onclick=()=>{
 overlay.style.display="flex";
@@ -187,30 +185,28 @@ running=true;
 setTimeout(()=>animate(),3000);
 };
 
-function emitFromImageCorners(){
-const rect=img.getBoundingClientRect();
-const cx=rect.left+rect.width/2;
-const cy=rect.top+rect.height/2;
+function spawnFromImageCorners(){
+const r=img.getBoundingClientRect();
+const cx=r.left+r.width/2;
+const cy=r.top+r.height/2;
 
-const corners=[
-{ x:rect.left, y:rect.top },
-{ x:rect.right, y:rect.top },
-{ x:rect.left, y:rect.bottom },
-{ x:rect.right, y:rect.bottom }
-];
-
-corners.forEach(c=>{
-for(let i=0;i<40;i++){
-const angle=Math.atan2(cy-c.y,cx-c.x)+(Math.random()-.5)*0.3;
-const speed=Math.random()*4+2;
+[
+{ x:r.left, y:r.top },
+{ x:r.right, y:r.top },
+{ x:r.left, y:r.bottom },
+{ x:r.right, y:r.bottom }
+].forEach(c=>{
+for(let i=0;i<35;i++){
+const a=Math.atan2(cy-c.y,cx-c.x)+(Math.random()-.5)*0.2;
+const s=Math.random()*3+2;
 particles.push({
 x:c.x,
 y:c.y,
-vx:Math.cos(angle)*speed,
-vy:Math.sin(angle)*speed,
+vx:Math.cos(a)*s,
+vy:Math.sin(a)*s,
 life:120,
-size:Math.random()*3+2,
-color:`hsl(${350+Math.random()*20},80%,40%)`
+size:Math.random()*2+1.5,
+color:`hsl(${350+Math.random()*10},80%,35%)`
 });
 }
 });
@@ -219,8 +215,7 @@ color:`hsl(${350+Math.random()*20},80%,40%)`
 function animate(){
 if(!running)return;
 ctx.clearRect(0,0,canvas.width,canvas.height);
-
-emitFromImageCorners();
+spawnFromImageCorners();
 
 particles.forEach((p,i)=>{
 p.x+=p.vx;
@@ -228,7 +223,7 @@ p.y+=p.vy;
 p.life--;
 ctx.beginPath();
 ctx.fillStyle=p.color;
-ctx.shadowBlur=25;
+ctx.shadowBlur=18;
 ctx.shadowColor=p.color;
 ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
 ctx.fill();
