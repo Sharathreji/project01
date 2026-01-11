@@ -1,221 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday Kavya</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <title>Happy Anniversary Kavya CJ ❤️</title>
   <style>
     body {
+      font-family: 'Poppins', sans-serif;
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('images/back2.png') no-repeat center center/cover;
-      overflow-x: hidden;
-    }
-
-    .title {
+      padding: 0;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      color: #333;
       text-align: center;
-      font-size: 3.5rem;
-      font-family: 'Dancing Script', cursive;
-      color: #fff;
-      margin-top: 50px;
-      background: linear-gradient(to right, #2c3e50, #4ca1af);
-      padding: 25px 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 25px rgba(0,0,0,0.6);
-      width: fit-content;
-      margin-left: auto;
-      margin-right: auto;
-      transition: transform 0.3s ease;
-      animation: pop 1s ease-in-out;
-      text-shadow: 2px 2px 10px rgba(255,255,255,0.3);
-      cursor: pointer;
     }
-
-    .title:hover {
-      transform: scale(1.05);
-    }
-
-    @keyframes pop {
-      0% { transform: scale(0.5); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    .love-box {
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 25px;
-      background: rgba(255, 255, 255, 0.7);
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      text-align: center;
-      color: #4b0033;
-      font-size: 1.4rem;
-      line-height: 1.9;
-      font-family: 'Dancing Script', cursive;
-    }
-
-    .heart {
-      font-size: 140px;
-      color: red;
-      text-align: center;
-      cursor: pointer;
-      animation: beat 1s infinite;
-      margin-top: 30px;
-    }
-
-    @keyframes beat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-    }
-
-    .popup-img {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      max-width: 90%;
-      max-height: 90%;
-      border: 10px solid white;
-      box-shadow: 0 0 30px rgba(0,0,0,0.7);
-      z-index: 2000;
-      border-radius: 20px;
-    }
-
-    .collage-title {
-      text-align: center;
+    header {
+      padding: 40px 20px;
       font-size: 2.5rem;
-      color: #1a1a1a;
-      margin-top: 40px;
-      text-shadow: 2px 2px 8px rgba(255,255,255,0.2);
-      background: linear-gradient(to right, #000428, #004e92);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       font-weight: bold;
+      color: #ffffff;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
     }
-
-    .collage {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      max-width: 900px;
-      margin: 20px auto 40px;
-      padding: 10px;
-      background: rgba(255, 255, 255, 0.85);
+    .section {
+      background: #fff;
+      margin: 20px auto;
+      padding: 30px;
+      border-radius: 20px;
+      width: 85%;
+      max-width: 800px;
+      box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);} 
+      to {opacity: 1; transform: translateY(0);} 
+    }
+    .letter {
+      text-align: left;
+      white-space: pre-line;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+    .fun-box {
+      background: #ffecec;
+      padding: 20px;
       border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      margin-top: 20px;
+      font-size: 1.1rem;
     }
-
-    .collage img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    .balloon {
-      position: fixed;
-      top: -100px;
-      width: 120px;
-      animation: floatBalloon 10s infinite ease-in;
-      z-index: 1000;
-    }
-
-    @keyframes floatBalloon {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(120vh); }
-    }
-
-    .glitter {
-      pointer-events: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('https://i.postimg.cc/ZKD2qSxB/glitter.gif');
-      background-size: cover;
-      opacity: 0.25;
-      z-index: 999;
-      mix-blend-mode: screen;
-    }
-
-    @media (max-width: 600px) {
-      .title {
-        font-size: 2.5rem;
-        padding: 20px;
-      }
-      .love-box {
-        font-size: 1.2rem;
-        padding: 20px;
-      }
-      .collage-title {
-        font-size: 2rem;
-      }
-      .heart {
-        font-size: 100px;
-      }
+    footer {
+      margin: 30px 0;
+      font-weight: bold;
+      color: #fff;
     }
   </style>
 </head>
 <body>
-  <div class="glitter"></div>
+  <header>💖 Happy 1st Anniversary Kavya CJ 💖</header>  <div class="section">
+    <h2>Our Love Story ❤️</h2>
+    <p class="letter">
+      We met in JMP Hospital. I was the rude Public Relations Officer, and you were the innocent junior pharmacist who had no idea that the guy scolding you was actually getting captivated by you.That day when a patient complained about the pharmacy and everyone pointed fingers at you... you looked scared, confused, like a small kitten caught in rain—but still innocent. And yes, I scolded you. But inside I was like: “Okay wow… who is she? 😳”
 
-  <h1 class="title" onclick="triggerSurprise()">Happy Birthday Kavya</h1>
+  I called you three times that day—THREE—madam didn’t pick up any of them. You didn’t even know it was me. And from that day onwards, I kept watching you (not creepy way…let's say… *romantically monitoring*). 😌
 
-  <div class="love-box">
-    Happy Birthday, Kavya – My Love, My Destiny
+  Later when we talked, my dear friend Akshay the electrician also got interested in you. So I had to… uhm… use my smart PR skills and divert him toward Anjana the pharmacist. Mission successful. 😎💡
 
-It’s crazy how life works…
-We didn’t start as friends, and we didn’t even like each other at first. We were two stubborn souls clashing in a world full of noise. But somewhere in the mess, something shifted. I saw you—truly saw you—and everything changed.
+  Then one day you asked to go home early. I, being the rule-following strict PRO, said no. But it was getting dark… you had a long journey… and you were on your period (which I didn’t know). You cried. And my heart broke into 17 pieces. I told you to go quickly, but the guilt stayed.
 
-What started with distance turned into a connection I never expected. Slowly, through every late-night chat, every laugh, and every shared silence… you became my peace, my strength, and the heartbeat I didn’t know I was missing.
+  Next day you tried talking to me. But I avoided you… in public… which I regretted more than anything. 😔
 
-Today, I look at you and see so much more than the girl I once argued with. I see my best decision, my favorite person, my future wife, and the love of my life.
+  Slowly, patiently, I found my way back into your circle. I created silly excuses to talk to you. You finally spoke to me again and we became friends. Hours and hours of phone calls… sometimes with topics I prepared like I’m studying for UPSC. 🤣
 
-You are my miracle in the most unexpected form.
+  And then… on 11 January 2025 at 10:30 PM, I proposed to you. At 11 PM… you said YES. ❤️
 
-Happy Birthday, my love. I’m beyond blessed to call you mine—today and always.
-  </div>
+  Today marks one year of us. One year of love, laughter, dumb fights, awkward moments, and a LOT of memories.
+</p>
 
-  <div class="heart" onclick="showPopup()">❤️</div>
-  <img src="images/popup.jpg" alt="Popup Surprise" class="popup-img" id="popupImg" />
+  </div>  <div class="section fun-box">
+    <h3>✨ Funny Highlights of Our Journey ✨</h3>
+    <ul style="text-align:left; list-style: none; padding:0;">
+      <li>💘 I fell in love while scolding you. Efficiency level: PRO max.</li>
+      <li>📞 You ignored my calls before it was cool.</li>
+      <li>⚡ Akshay got diverted like an electric current.</li>
+      <li>😢 You cried once… and my guilt still haunts me like a ghost.</li>
+      <li>📚 I prepared conversation topics like assignments.</li>
+      <li>💍 And finally… you said YES. Best moment ever.</li>
+    </ul>
+  </div>  <div class="section">
+    <h2>💌 A Romantic Letter For You, Kavya 💌</h2>
+    <p class="letter">
+      My dearest Kavya,Happy Anniversary, my love. Every day with you feels like a story written with warmth, innocence, and mischief. You changed the way I see love—you made it softer, sweeter, more real.
 
-  <h2 class="collage-title">Happy Birthday With Love</h2>
+  You are the calm to my chaos, the innocence to my attitude, the softness to my rough days. I love you for everything you are—your kindness, your strength, your laughter, your stubbornness, and the way you make my world feel complete.
 
-  <div class="collage">
-    <img src="images/k1.jpg" alt="Kavya 1">
-    <img src="images/k2.jpg" alt="Kavya 2">
-    <img src="images/k4.jpg" alt="Kavya 3">
-    <img src="images/k5.jpg" alt="Kavya 4">
-    <img src="images/k3.jpg" alt="Kavya 5">
-    <img src="images/k7.jpg" alt="Kavya 6">
-    <img src="images/k8.jpg" alt="Kavya 7">
-    <img src="images/k9.jpg" alt="Kavya 8">
-  </div>
+  Thank you for choosing me. Thank you for loving me. And thank you… for picking up my call after months. ❤️🤣
 
-  <script>
-    for (let i = 0; i < 30; i++) {
-      let balloon = document.createElement('img');
-      balloon.src = i % 2 === 0 ? 'images/bal3.png' : 'images/bal2.png';
-      balloon.classList.add('balloon');
-      balloon.style.left = Math.random() * 100 + 'vw';
-      balloon.style.animationDuration = (6 + Math.random() * 5) + 's';
-      document.body.appendChild(balloon);
-    }
+  I love you endlessly,
+  — Sharath ❤️
+</p>
 
-    function triggerSurprise() {
-      alert("HEHE😋! I love you with all my belly. I would say heart, but my belly is bigger. – never forget that!");
-    }
-
-    function showPopup() {
-      const popup = document.getElementById("popupImg");
-      popup.style.display = "block";
-      setTimeout(() => {
-        popup.style.display = "none";
-      }, 7000);
-    }
-  </script>
+  </div>  <footer>💞 Here's to many more years of love, madness, and us 💞</footer>
 </body>
 </html>
