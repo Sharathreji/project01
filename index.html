@@ -157,15 +157,15 @@ Today marks one year of us — one year of love, chaos, guilt, laughter, diversi
 </p>
 </div>
 
-</div> <div class="section fun-box"> 
+<div class="section fun-box"> 
 <h3>✨ Funny Highlights of Our Journey ✨</h3> 
-<ul style="text-align:left; list-style: none; padding:0;"> 
+<ul> 
 <li>💘 I fell in love while scolding you. Efficiency level: PRO max.</li> 
 <li>📞 You ignored my calls before it was cool.</li> 
 <li>😢 You cried once… and my guilt still haunts me like a ghost.</li>
- <li>⚡ Akshay got diverted like an electric current.</li>
- <li>📚 I prepared conversation topics like assignments for execution. </li>
- <li>💍 And finally… you said YES. Best moment ever.</li> 
+<li>⚡ Akshay got diverted like an electric current.</li>
+<li>📚 I prepared conversation topics like assignments for execution.</li>
+<li>💍 And finally… you said YES. Best moment ever.</li> 
 </ul>
 </div>
 
@@ -180,11 +180,60 @@ Thank you for choosing me. Thank you for loving me. And thank you… for picking
 
 I love you endlessly, 
     — Sharath (your appappi)❤️
-
 </p>
+
+<!-- SURPRISE BUTTON (ONLY ADDITION) -->
+<button id="surpriseBtn" style="margin-top:20px;padding:12px 30px;border:none;border-radius:30px;font-size:1.1rem;background:#ff4d6d;color:#fff;cursor:pointer;box-shadow:0 10px 25px rgba(0,0,0,0.2);">
+🎁 Surprise
+</button>
 </div>
 
 <footer>💞 Forever us. Always. 💞</footer>
+
+<!-- SURPRISE OVERLAY -->
+<div id="surpriseOverlay" style="display:none;position:fixed;inset:0;z-index:9999;background:#000;">
+  <img src="images/example.png" style="width:100%;height:100%;object-fit:contain;">
+  <canvas id="fireworksCanvas" style="position:absolute;inset:0;"></canvas>
+  <audio id="bgMusic" src="images/song.mp3"></audio>
+</div>
+
+<script>
+const btn = document.getElementById("surpriseBtn");
+const overlay = document.getElementById("surpriseOverlay");
+const music = document.getElementById("bgMusic");
+const canvas = document.getElementById("fireworksCanvas");
+const ctx = canvas.getContext("2d");
+
+btn.onclick = () => {
+  overlay.style.display = "block";
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+  music.play();
+  fireworks();
+};
+
+music.onended = () => overlay.style.display = "none";
+
+function fireworks(){
+  const p=[];
+  function burst(x,y){
+    for(let i=0;i<80;i++)
+      p.push({x,y,vx:(Math.random()-.5)*6,vy:(Math.random()-.5)*6,l:100});
+  }
+  burst(0,canvas.height);
+  burst(canvas.width,canvas.height);
+  (function a(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    p.forEach((o,i)=>{
+      o.x+=o.vx;o.y+=o.vy;o.l--;
+      ctx.fillStyle="rgba(255,120,180,.8)";
+      ctx.beginPath();ctx.arc(o.x,o.y,2,0,6.28);ctx.fill();
+      if(o.l<=0)p.splice(i,1);
+    });
+    requestAnimationFrame(a);
+  })();
+}
+</script>
 
 </body>
 </html>
