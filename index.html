@@ -175,8 +175,10 @@ const overlay=document.getElementById("surpriseOverlay");
 const music=document.getElementById("bgMusic");
 const canvas=document.getElementById("fireworksCanvas");
 const ctx=canvas.getContext("2d");
+
 let particles=[];
 let running=false;
+let fireDelay=null;
 
 btn.onclick=()=>{
 overlay.style.display="block";
@@ -184,52 +186,60 @@ canvas.width=innerWidth;
 canvas.height=innerHeight;
 music.play();
 running=true;
-fireworks();
+
+fireDelay=setTimeout(()=>{animateFireworks();},3000);
 };
 
 music.onended=()=>{
 running=false;
-overlay.style.display="none";
+clearTimeout(fireDelay);
 particles=[];
+overlay.style.display="none";
 };
 
-function burst(x,y){
-for(let i=0;i<100;i++){
+function createBurst(x,y){
+for(let i=0;i<150;i++){
 const cx=canvas.width/2;
 const cy=canvas.height/2;
-const angle=Math.atan2(cy-y,cx-x);
+const angle=Math.atan2(cy-y,cx-x)+(Math.random()-.5);
+const speed=Math.random()*5+3;
 particles.push({
 x,y,
-vx:Math.cos(angle)*(Math.random()*4+2),
-vy:Math.sin(angle)*(Math.random()*4+2),
-life:120
+vx:Math.cos(angle)*speed,
+vy:Math.sin(angle)*speed,
+life:160,
+size:Math.random()*3+2,
+color:`hsl(${Math.random()*360},100%,70%)`
 });
 }
 }
 
-function fireworks(){
+function animateFireworks(){
 if(!running)return;
 ctx.clearRect(0,0,canvas.width,canvas.height);
 
-if(Math.random()<0.1){
-burst(0,0);
-burst(canvas.width,0);
-burst(0,canvas.height);
-burst(canvas.width,canvas.height);
+if(Math.random()<0.08){
+createBurst(0,0);
+createBurst(canvas.width,0);
+createBurst(0,canvas.height);
+createBurst(canvas.width,canvas.height);
 }
 
 particles.forEach((p,i)=>{
 p.x+=p.vx;
 p.y+=p.vy;
+p.vy+=0.02;
 p.life--;
-ctx.fillStyle="rgba(255,120,180,.9)";
 ctx.beginPath();
-ctx.arc(p.x,p.y,2,0,6.28);
+ctx.fillStyle=p.color;
+ctx.shadowBlur=20;
+ctx.shadowColor=p.color;
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
 ctx.fill();
 if(p.life<=0)particles.splice(i,1);
 });
 
-requestAnimationFrame(fireworks);
+requestAnimationFrame(animateFireworks);
 }
 </script>
 
