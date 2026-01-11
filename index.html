@@ -5,105 +5,135 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Anniversary Kavya CJ ❤️</title>
 
+<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box;}
-body{
-font-family:'Poppins',sans-serif;
-margin:0;
-padding:0;
-background:radial-gradient(circle at top,#ff9a9e,#fad0c4,#fad0c4);
-color:#333;
-overflow-x:hidden;
-text-align:center;
+*{
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top, #ff9a9e, #fad0c4, #fad0c4);
+  color: #333;
+  overflow-x: hidden;
+  text-align: center;
 }
 
 /* FLOATING EMOJIS */
-.emoji{
-position:fixed;
-font-size:24px;
-animation:floatUp 12s linear infinite;
-opacity:.8;
+.emoji {
+  position: fixed;
+  font-size: 24px;
+  animation: floatUp 12s linear infinite;
+  opacity: 0.8;
 }
-@keyframes floatUp{
-from{transform:translateY(100vh) scale(.8);opacity:0;}
-to{transform:translateY(-10vh) scale(1.2);opacity:1;}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(100vh) scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-10vh) scale(1.2);
+    opacity: 1;
+  }
 }
 
 /* HEADER */
-header{
-padding:60px 20px;
-font-size:3rem;
-font-weight:600;
-color:#fff;
-text-shadow:0 0 20px rgba(255,255,255,.6);
-animation:glow 3s ease-in-out infinite alternate;
+header {
+  padding: 60px 20px;
+  font-size: 3rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255,255,255,0.6);
+  animation: glow 3s ease-in-out infinite alternate;
 }
-@keyframes glow{
-from{text-shadow:0 0 10px #fff;}
-to{text-shadow:0 0 25px #ff4d6d;}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #fff; }
+  to { text-shadow: 0 0 25px #ff4d6d; }
 }
 
 /* GLASS SECTION */
-.section{
-background:rgba(255,255,255,.25);
-backdrop-filter:blur(12px);
-margin:30px auto;
-padding:35px;
-border-radius:25px;
-width:85%;
-max-width:850px;
-box-shadow:0 15px 40px rgba(0,0,0,.15);
-animation:fadeIn 1.5s ease forwards;
-}
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(40px);}
-to{opacity:1;transform:translateY(0);}
+.section {
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(12px);
+  margin: 30px auto;
+  padding: 35px;
+  border-radius: 25px;
+  width: 85%;
+  max-width: 850px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  animation: fadeIn 1.5s ease forwards;
 }
 
-.letter{
-text-align:left;
-white-space:pre-line;
-font-size:1.15rem;
-line-height:1.8;
-color:#2d2d2d;
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(40px);}
+  to {opacity: 1; transform: translateY(0);}
 }
 
-.fun-box{
-background:rgba(255,255,255,.35);
-border-radius:20px;
-padding:25px;
-font-size:1.1rem;
+/* TEXT */
+.letter {
+  text-align: left;
+  white-space: pre-line;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #2d2d2d;
 }
 
-ul{list-style:none;padding:0;text-align:left;}
-ul li{margin:10px 0;}
-
-footer{
-margin:40px 0;
-font-weight:600;
-font-size:1.2rem;
-color:#fff;
-text-shadow:0 0 15px rgba(255,255,255,.8);
+/* FUN BOX */
+.fun-box {
+  background: rgba(255,255,255,0.35);
+  border-radius: 20px;
+  padding: 25px;
+  font-size: 1.1rem;
 }
 
-@media(max-width:600px){
-header{font-size:2.2rem;}
-.letter{font-size:1rem;}
+/* LIST */
+ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+ul li {
+  margin: 10px 0;
+}
+
+/* FOOTER */
+footer {
+  margin: 40px 0;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #fff;
+  text-shadow: 0 0 15px rgba(255,255,255,0.8);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  header {
+    font-size: 2.2rem;
+  }
+  .letter {
+    font-size: 1rem;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<span class="emoji" style="left:5%">❤️</span>
-<span class="emoji" style="left:15%">💖</span>
-<span class="emoji" style="left:30%">💕</span>
-<span class="emoji" style="left:45%">💘</span>
-<span class="emoji" style="left:60%">❤️</span>
-<span class="emoji" style="left:75%">💖</span>
-<span class="emoji" style="left:90%">💕</span>
+<!-- FLOATING EMOJIS -->
+<span class="emoji" style="left:5%; animation-delay:0s;">❤️</span>
+<span class="emoji" style="left:15%; animation-delay:2s;">💖</span>
+<span class="emoji" style="left:30%; animation-delay:4s;">💕</span>
+<span class="emoji" style="left:45%; animation-delay:1s;">💘</span>
+<span class="emoji" style="left:60%; animation-delay:3s;">❤️</span>
+<span class="emoji" style="left:75%; animation-delay:5s;">💖</span>
+<span class="emoji" style="left:90%; animation-delay:6s;">💕</span>
 
 <header>💖 Happy 1st Anniversary Kavya CJ 💖</header>
 
@@ -127,15 +157,15 @@ Today marks one year of us — one year of love, chaos, guilt, laughter, diversi
 </p>
 </div>
 
-<div class="section fun-box">
-<h3>✨ Funny Highlights of Our Journey ✨</h3>
-<ul>
-<li>💘 I fell in love while scolding you. Efficiency level: PRO max.</li>
-<li>📞 You ignored my calls before it was cool.</li>
+<div class="section fun-box"> 
+<h3>✨ Funny Highlights of Our Journey ✨</h3> 
+<ul> 
+<li>💘 I fell in love while scolding you. Efficiency level: PRO max.</li> 
+<li>📞 You ignored my calls before it was cool.</li> 
 <li>😢 You cried once… and my guilt still haunts me like a ghost.</li>
 <li>⚡ Akshay got diverted like an electric current.</li>
 <li>📚 I prepared conversation topics like assignments for execution.</li>
-<li>💍 And finally… you said YES. Best moment ever.</li>
+<li>💍 And finally… you said YES. Best moment ever.</li> 
 </ul>
 </div>
 
@@ -152,7 +182,8 @@ I love you endlessly,
     — Sharath (your appappi)❤️
 </p>
 
-<button id="surpriseBtn" style="margin-top:20px;padding:12px 30px;border:none;border-radius:30px;font-size:1.1rem;background:#ff4d6d;color:#fff;cursor:pointer;box-shadow:0 10px 25px rgba(0,0,0,.2);">
+<!-- SURPRISE BUTTON (ONLY ADDITION) -->
+<button id="surpriseBtn" style="margin-top:20px;padding:12px 30px;border:none;border-radius:30px;font-size:1.1rem;background:#ff4d6d;color:#fff;cursor:pointer;box-shadow:0 10px 25px rgba(0,0,0,0.2);">
 🎁 Surprise
 </button>
 </div>
@@ -160,77 +191,47 @@ I love you endlessly,
 <footer>💞 Forever us. Always. 💞</footer>
 
 <!-- SURPRISE OVERLAY -->
-<div id="surpriseOverlay" style="display:none;position:fixed;inset:0;z-index:9999;background:#000;display:flex;align-items:center;justify-content:center;">
-  <img id="centerImage" src="images/example.png" style="max-width:90%;max-height:90%;object-fit:contain;z-index:2;">
-  <canvas id="fireCanvas" style="position:absolute;inset:0;z-index:1;"></canvas>
+<div id="surpriseOverlay" style="display:none;position:fixed;inset:0;z-index:9999;background:#000;">
+  <img src="images/example.png" style="width:100%;height:100%;object-fit:contain;">
+  <canvas id="fireworksCanvas" style="position:absolute;inset:0;"></canvas>
   <audio id="bgMusic" src="images/song.mp3"></audio>
 </div>
 
 <script>
-const btn=document.getElementById("surpriseBtn");
-const overlay=document.getElementById("surpriseOverlay");
-const music=document.getElementById("bgMusic");
-const canvas=document.getElementById("fireCanvas");
-const img=document.getElementById("centerImage");
-const ctx=canvas.getContext("2d");
+const btn = document.getElementById("surpriseBtn");
+const overlay = document.getElementById("surpriseOverlay");
+const music = document.getElementById("bgMusic");
+const canvas = document.getElementById("fireworksCanvas");
+const ctx = canvas.getContext("2d");
 
-let particles=[],running=false;
-
-btn.onclick=()=>{
-overlay.style.display="flex";
-canvas.width=innerWidth;
-canvas.height=innerHeight;
-music.play();
-running=true;
-setTimeout(()=>animate(),3000);
+btn.onclick = () => {
+  overlay.style.display = "block";
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+  music.play();
+  fireworks();
 };
 
-function spawnFromImageCorners(){
-const r=img.getBoundingClientRect();
-const cx=r.left+r.width/2;
-const cy=r.top+r.height/2;
+music.onended = () => overlay.style.display = "none";
 
-[
-{ x:r.left, y:r.top },
-{ x:r.right, y:r.top },
-{ x:r.left, y:r.bottom },
-{ x:r.right, y:r.bottom }
-].forEach(c=>{
-for(let i=0;i<35;i++){
-const a=Math.atan2(cy-c.y,cx-c.x)+(Math.random()-.5)*0.2;
-const s=Math.random()*3+2;
-particles.push({
-x:c.x,
-y:c.y,
-vx:Math.cos(a)*s,
-vy:Math.sin(a)*s,
-life:120,
-size:Math.random()*2+1.5,
-color:`hsl(${350+Math.random()*10},80%,35%)`
-});
-}
-});
-}
-
-function animate(){
-if(!running)return;
-ctx.clearRect(0,0,canvas.width,canvas.height);
-spawnFromImageCorners();
-
-particles.forEach((p,i)=>{
-p.x+=p.vx;
-p.y+=p.vy;
-p.life--;
-ctx.beginPath();
-ctx.fillStyle=p.color;
-ctx.shadowBlur=18;
-ctx.shadowColor=p.color;
-ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-ctx.fill();
-if(p.life<=0)particles.splice(i,1);
-});
-
-requestAnimationFrame(animate);
+function fireworks(){
+  const p=[];
+  function burst(x,y){
+    for(let i=0;i<80;i++)
+      p.push({x,y,vx:(Math.random()-.5)*6,vy:(Math.random()-.5)*6,l:100});
+  }
+  burst(0,canvas.height);
+  burst(canvas.width,canvas.height);
+  (function a(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    p.forEach((o,i)=>{
+      o.x+=o.vx;o.y+=o.vy;o.l--;
+      ctx.fillStyle="rgba(255,120,180,.8)";
+      ctx.beginPath();ctx.arc(o.x,o.y,2,0,6.28);ctx.fill();
+      if(o.l<=0)p.splice(i,1);
+    });
+    requestAnimationFrame(a);
+  })();
 }
 </script>
 
