@@ -13,7 +13,8 @@
 body{
   font-family:'Poppins',sans-serif;
   margin:0;
-  background:radial-gradient(circle at top,#ff9a9e,#fad0c4);
+  padding:0;
+  background:radial-gradient(circle at top,#ff9a9e,#fad0c4,#fad0c4);
   text-align:center;
   overflow-x:hidden;
 }
@@ -34,8 +35,8 @@ body{
 header{
   padding:60px 20px;
   font-size:3rem;
-  color:#fff;
   font-weight:600;
+  color:#fff;
   text-shadow:0 0 20px rgba(255,255,255,.6);
   animation:glow 3s ease-in-out infinite alternate;
 }
@@ -77,14 +78,15 @@ header{
   padding:25px;
 }
 
+/* LIST */
 ul{list-style:none;padding:0;text-align:left}
 ul li{margin:10px 0}
 
 /* FOOTER */
 footer{
   margin:40px 0;
-  font-size:1.2rem;
   font-weight:600;
+  font-size:1.2rem;
   color:#fff;
   text-shadow:0 0 15px rgba(255,255,255,.8);
 }
@@ -112,8 +114,20 @@ footer{
 <div class="section">
 <h2>Our Love Story ❤️</h2>
 <p class="letter">
-We met in JMP Hospital. I was the rude Public Relations Officer, and you were the innocent junior pharmacist...
-[CONTENT UNCHANGED – FULL STORY REMAINS EXACTLY SAME]
+We met in JMP Hospital. I was the rude Public Relations Officer, and you were the innocent junior pharmacist who had no idea that the guy scolding you was actually falling for you faster than a nurse runs when someone shouts "sister!" 😳That day, a patient complained about the pharmacy and everyone pointed at you like you were the last bench student who didn’t do homework. You stood there… scared… confused… looking like a kitten who accidentally entered an operation theatre. And yes, I scolded you — but inside I was having a full love-at-first-sight meltdown. 
+
+I called you three times that day — THREE. Madam didn’t pick a single one. She didn’t even know it was me. Meanwhile, I was checking my call log like a heartbroken Romeo. 
+
+Slowly I started watching you every day (romantically… not CCTV level 👀). And when we finally talked, everything felt right — Then came the emotional earthquake — the day you asked to go home early. I said no, following rules like a strict Malayalam movie manager. But it got late… you had a long way… and you were on your period (which I didn’t know). You cried… and I felt like the villain in my own love story. 
+
+Next day you tried to talk to me, but I avoided you — which I regret more than skipping petrol when the tank is empty. You apologised in public and I still acted tough. then Akshay the electrician entered the chat. ⚡(that annoyed me so much you guys sit together laugh and talk it was like a disaster for me) 
+
+He also liked you. And I, being the strategic mastermind I am, had to gently divert him. Not hurt… just reroute… like a Google Maps update: “New destination → Anjana the pharmacist.” Mission successful without any shock hazards. (😎Biggest mistake of my life). 
+
+But slowly… I made my way back into your world. I created silly excuses to talk to you. I prepared topics like a student preparing last-minute notes before exams. You finally spoke to me again… and we became friends, laughing and talking for hours. 
+And then… on 11 January 2025 at 10:30 PM, I proposed. At 11 PM… you said YES. And my soul did a backflip. 
+
+Today marks one year of us — one year of love, chaos, guilt, laughter, diversions, phone calls, and destiny.
 </p>
 </div>
 
@@ -132,7 +146,11 @@ We met in JMP Hospital. I was the rude Public Relations Officer, and you were th
 <div class="section">
 <h2>💌 For My Shuttumani 💌</h2>
 <p class="letter">
-My dearest Kavya, Happy Anniversary my love...
+My dearest Kavya,
+Happy Anniversary, my love.
+Thank you for choosing me, loving me, and becoming my forever.
+
+I love you endlessly,
 — Sharath (your appappi) ❤️
 </p>
 
@@ -156,23 +174,27 @@ const overlay=document.getElementById("surpriseOverlay");
 const music=document.getElementById("bgMusic");
 const canvas=document.getElementById("fireworksCanvas");
 const ctx=canvas.getContext("2d");
-let particles=[],anim;
+
+let particles=[];
+let running=false;
 
 btn.onclick=()=>{
   overlay.style.display="block";
   canvas.width=innerWidth;
   canvas.height=innerHeight;
+  running=true;
   music.play();
   setTimeout(startFireworks,3000);
 };
 
 music.onended=()=>{
-  cancelAnimationFrame(anim);
+  running=false;
   overlay.style.display="none";
   particles=[];
 };
 
 function startFireworks(){
+  if(!running) return;
   const cx=canvas.width/2,cy=canvas.height/2;
   launch(0,0,cx,cy);
   launch(canvas.width,0,cx,cy);
@@ -185,11 +207,12 @@ function launch(x,y,tx,ty){
   for(let i=0;i<80;i++){
     const a=Math.atan2(ty-y,tx-x)+(Math.random()-.5);
     const s=Math.random()*4+2;
-    particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:100});
+    particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:120});
   }
 }
 
 function animate(){
+  if(!running) return;
   ctx.clearRect(0,0,canvas.width,canvas.height);
   particles.forEach((p,i)=>{
     p.x+=p.vx;p.y+=p.vy;p.l--;
@@ -199,7 +222,7 @@ function animate(){
     ctx.fill();
     if(p.l<=0)particles.splice(i,1);
   });
-  anim=requestAnimationFrame(animate);
+  requestAnimationFrame(animate);
 }
 
 window.onresize=()=>{
