@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Happy Anniversary Kavya CJ ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -25,6 +25,7 @@ body{
   font-size:24px;
   animation:floatUp 12s linear infinite;
   opacity:.8;
+  pointer-events:none;
 }
 @keyframes floatUp{
   from{transform:translateY(100vh) scale(.8);opacity:0}
@@ -49,17 +50,13 @@ header{
 .section{
   background:rgba(255,255,255,.25);
   backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
   margin:30px auto;
   padding:35px;
   border-radius:25px;
   width:85%;
   max-width:850px;
   box-shadow:0 15px 40px rgba(0,0,0,.15);
-  animation:fadeIn 1.5s ease forwards;
-}
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(40px)}
-  to{opacity:1;transform:translateY(0)}
 }
 
 /* TEXT */
@@ -134,9 +131,9 @@ footer{
 <h2>💌 For My Shuttumani 💌</h2>
 <p class="letter">
 My dearest Kavya,
-Happy Anniversary my love.
+Happy Anniversary, my love.
 I love you endlessly.
-— Sharath ❤️
+— Sharath (your appappi) ❤️
 </p>
 
 <button id="surpriseBtn" style="margin-top:20px;padding:12px 30px;border:none;border-radius:30px;font-size:1.1rem;background:#ff4d6d;color:#fff;cursor:pointer;box-shadow:0 10px 25px rgba(0,0,0,.2);">
@@ -150,7 +147,7 @@ I love you endlessly.
 <div id="surpriseOverlay" style="display:none;position:fixed;inset:0;z-index:9999;background:#000">
   <img src="images/example.png" style="width:100%;height:100%;object-fit:contain">
   <canvas id="fireworksCanvas" style="position:absolute;inset:0"></canvas>
-  <audio id="bgMusic" src="images/song.mp3"></audio>
+  <audio id="bgMusic" src="images/song.mp3" preload="auto"></audio>
 </div>
 
 <script>
@@ -163,11 +160,21 @@ const ctx = canvas.getContext("2d");
 let particles = [];
 let running = false;
 let burstInterval;
+let dpr = window.devicePixelRatio || 1;
+
+function resizeCanvas(){
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  canvas.style.width = w + "px";
+  canvas.style.height = h + "px";
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+}
 
 btn.onclick = () => {
   overlay.style.display = "block";
-  canvas.width = innerWidth;
-  canvas.height = innerHeight;
+  resizeCanvas();
   running = true;
   music.play();
 
@@ -180,18 +187,18 @@ btn.onclick = () => {
 music.onended = () => {
   running = false;
   clearInterval(burstInterval);
-  particles = [];
+  particles.length = 0;
   overlay.style.display = "none";
 };
 
 function startContinuousFireworks(){
   const burst = () => {
-    const cx = canvas.width / 2;
-    const cy = canvas.height / 2;
+    const cx = canvas.width / dpr / 2;
+    const cy = canvas.height / dpr / 2;
     launch(0,0,cx,cy);
-    launch(canvas.width,0,cx,cy);
-    launch(0,canvas.height,cx,cy);
-    launch(canvas.width,canvas.height,cx,cy);
+    launch(canvas.width/dpr,0,cx,cy);
+    launch(0,canvas.height/dpr,cx,cy);
+    launch(canvas.width/dpr,canvas.height/dpr,cx,cy);
   };
   burst();
   burstInterval = setInterval(burst, 800);
@@ -208,7 +215,8 @@ function launch(x,y,tx,ty){
 function animate(){
   if(!running) return;
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  particles.forEach((p,i)=>{
+  for(let i=particles.length-1;i>=0;i--){
+    const p = particles[i];
     p.x += p.vx;
     p.y += p.vy;
     p.l--;
@@ -216,15 +224,13 @@ function animate(){
     ctx.beginPath();
     ctx.arc(p.x,p.y,2,0,Math.PI*2);
     ctx.fill();
-    if(p.l <= 0) particles.splice(i,1);
-  });
+    if(p.l<=0) particles.splice(i,1);
+  }
   requestAnimationFrame(animate);
 }
 
-window.onresize = () => {
-  canvas.width = innerWidth;
-  canvas.height = innerHeight;
-};
+window.addEventListener("resize", resizeCanvas);
+window.addEventListener("orientationchange", resizeCanvas);
 </script>
 
 </body>
